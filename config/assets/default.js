@@ -5,7 +5,12 @@ module.exports = {
     lib: {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.css'
+        'public/lib/bootstrap/dist/css/bootstrap-theme.css',
+        'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
+        'public/lib/jquery-ui/jquery-ui.min.css',
+        'public/lib/material-design-iconic-font/css/material-design-iconic-font.min.css',
+        'public/lib/rslides/responsiveslides.css',
+        'public/lib/slick/slick.css',
       ],
       js: [
         'public/lib/angular/angular.js',
@@ -16,7 +21,12 @@ module.exports = {
         'public/lib/angular-ui-utils/ui-utils.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',
         'public/lib/angular-file-upload/angular-file-upload.js',
-        'public/lib/owasp-password-strength-test/owasp-password-strength-test.js'
+        'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
+        'public/lib/jquery/dist/jquery.min.js',
+        'public/lib/rslides/responsiveslides.min.js',
+        'public/lib/jquery-ui/jquery-ui.min.js',
+        'public/lib/slick/slick.min.js',
+        'public/lib/js/main.js',
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

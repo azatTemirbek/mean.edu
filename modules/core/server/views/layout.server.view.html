@@ -36,12 +36,84 @@
 </head>
 
 <body class="ng-cloak">
-  <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar navbar-fixed-top navbar-inverse"></header>
+  <header ng-include="'/modules/core/client/views/header.client.view.html'" class="navbar"></header>
   <section class="content">
     <section class="container">
       {% block content %}{% endblock %}
     </section>
   </section>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <h1 class="logo"><a href="index.html"><img src="assets/images/logo.png" alt="Logo"></a></h1>
+          <ul class="contactinfo">
+            <li class="address"><strong>Address:</strong>Ankara Çankaya Kimiz sok. no 15/9 </li>
+            <li class="phone"><strong>Phone:</strong>  +90 552 456 789</li>
+            <li class="email"><strong>E-mail:</strong>  info@dersverilir.com</li>
+          </ul>
+          <ul class="social">
+            <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li><li>
+            <a href="#"><i class="zmdi zmdi-twitter"></i></a></li><li>
+            <a href="#"><i class="zmdi zmdi-google-old"></i></a></li><li>
+            <a href="#"><i class="zmdi zmdi-pinterest"></i></a></li><li>
+            <a href="#"><i class="zmdi zmdi-instagram"></i></a></li><li>
+            <a href="#"><i class="zmdi zmdi-rss"></i></a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <h6>YARDIM AL</h6>
+          <ul class="information">
+            <li><a href="#">Yardım ve SSS</a></li>
+            <li><a href="#">Görüntülü Dersler</a></li>
+            <li><a href="#">Online Rezervasyon</a></li>
+            <li><a href="#">Online Yardim</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <h6>BİLGİ EDİNME</h6>
+          <ul class="information">
+            <li><a href="#">Hakkımızda</a></li>
+            <li><a href="#">Hizmetimiz</a></li>
+            <li><a href="#">Alışveriş Geçmişim</a></li>
+            <li><a href="#">Bilgilendirme</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-6 col-xs-12">
+          <h6>HESABIM</h6>
+          <ul class="information">
+            <li><a href="#">Fıyatlar</a></li>
+            <li><a href="#">Fvoriler</a></li>
+            <li><a href="#">Kişisel Bilgiler</a></li>
+            <li><a href="#">Giriş Yap</a></li>
+          </ul>
+        </div>
+        <div class="col-md-2 col-sm-12 col-xs-12">
+          <h6>HIZLI LİNKLER</h6>
+          <ul class="information">
+            <li><a href="#">Görüntülü dersler</a></li>
+            <li><a href="#">Online dersler</a></li>
+            <li><a href="#">ÖĞretmenimiz Ol</a></li>
+            <li><a href="#">İletişim</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="row botbar">
+        <div class="col-sm-7">
+          <p class="copyright">Copyright 2017 &copy; Bromine - Video Learning Platform  | All Rights Reserved</p>
+        </div>
+        <div class="col-sm-5">
+          <ul class="pull-right payments">
+            <li><a href="#"><img src="modules/core/client/img/images/payments/1.png" alt="Payment"></a></li>
+            <li><a href="#"><img src="modules/core/client/img/images/payments/2.png" alt="Payment"></a></li>
+            <li><a href="#"><img src="modules/core/client/img/images/payments/3.png" alt="Payment"></a></li>
+            <li><a href="#"><img src="modules/core/client/img/images/payments/4.png" alt="Payment"></a></li>
+            <li><a href="#"><img src="modules/core/client/img/images/payments/5.png" alt="Payment"></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!--Embedding The User Object-->
   <script type="text/javascript">
@@ -50,6 +122,7 @@
 
   <!--Load The Socket.io File-->
   <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
   <!--Application JavaScript Files-->
   {% for jsFile in jsFiles %}<script type="text/javascript" src="{{jsFile}}"></script>{% endfor %}

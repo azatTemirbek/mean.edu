@@ -7,11 +7,13 @@
   display: inline-block;
   position: relative;
 }
-.btn-remove-account {
-  top: 10px;
-  right: 10px;
+.btn-add-remove-account {
+  pointer-events: none;
   position: absolute;
+  right: 10px;
+  top: 10px;
 }
+
 .btn-file {
   position: relative;
   overflow: hidden;
@@ -31,6 +33,23 @@
   display: block;
 }
 .user-profile-picture {
-  min-height: 150px;
   max-height: 150px;
+  min-height: 150px;
+}
+.social-button {
+  -webkit-transition-duration: 0.4s;
+  -moz-transition-duration: 0.4s;
+  -o-transition-duration: 0.4s;
+  transition-duration: 0.4s;
+}
+.social-button:hover {
+  opacity: 0.65;
+}
+.navcost > li > a {
+  height: 20%;
+  padding-top: 2%;
+  background: #2b3c51;
+}
+footer{
+  margin-top: 10%;
 }
