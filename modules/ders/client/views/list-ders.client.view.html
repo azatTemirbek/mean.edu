@@ -1,0 +1,102 @@
+<section>
+  <div class="page-heading text-center">
+    <div class="container">
+      <h3  style="color: #0f0f0f" >DERS LİSEMİZ</h3>
+    </div>
+  </div>
+
+  <div class="container popular">
+    <div class="row toolbar">
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <div class="form-group">
+          <select class="form-control" id="sel1" ng-model="vm.search.kategoris.name">
+            <option selected value="" disabled hidden>Kategori Seç</option>
+            <option ng-repeat="option in vm.kategoris" value="{{option.name}}">{{option.name}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <select class="form-control">
+          <option>Öğretmen Seçin</option>
+          <option value="1">Teacher 1</option>
+          <option value="2">Teacher 2</option>
+          <option value="3">Teacher 3</option>
+        </select>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12">
+        <select class="form-control">
+          <option>Sırala</option>
+          <option value="1">sort by 1</option>
+          <option value="2">sort by 2</option>
+          <option value="3">sort by 3</option>
+        </select>
+      </div>
+      <div class="col-md-2 col-sm-6 col-xs-12">
+        <input class="form-control" ng-model="vm.search.$" id="kategories" type="text" placeholder="Anahtar kelime">
+      </div>
+      <div class="col-md-1 col-sm-6 col-xs-12">
+        <button class="btn btn-primary">ARA</button>
+      </div>
+    </div>
+    <div class="row tutorials">
+      <div class="col-sm-3">
+        <aside class="categories">
+          <h6>Kategoriler</h6>
+          <ul>
+            <li ng-repeat="k in vm.kategoris">
+              <a href ng-click="vm.search.kategoris.name = k.name">{{k.name}}</a>
+            </li>
+          </ul>
+        </aside>
+        <div class="start-today">
+          <p class="price">50</p>
+          <p class="readytostart">Öğrenmeye <br>başlayalım mı?</p>
+          <a href="#">HEMEN BAŞLA!</a>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-md-4 col-sm-6" ng-repeat="der in filtered = ( vm.ders | filter:vm.search:strict ) | pagination: (vm.currentPage-1)*vm.pageSize | limitTo: vm.pageSize ">
+            <div class="tutorial">
+              <img src="modules/core/client/img/images/popular/201.jpg" class="resp-img" alt="Tutorial">
+              <div class="tutorial-details">
+                <h6>{{der.name}}</h6>
+                <p><i class="zmdi zmdi-account-circle"></i> <span ng-if="der.user" ng-bind="der.user.displayName"></span>
+                  <span class="lessons pull-right"><i class="zmdi zmdi-time"></i> {{der.created | date:'mediumDate'}}</span>
+                </p>
+                <p class="abs">{{der.description}}</p>
+                <a ui-sref="ders.view({ derId: der._id })" class="greybutton">DERSİ İNCELE</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <!--<div class="list-group">-->
+    <!--<a ng-repeat="der in vm.ders"-->
+       <!--ui-sref="ders.view({ derId: der._id })"-->
+       <!--class="list-group-item">-->
+      <!--<small class="list-group-item-text">-->
+        <!--Posted on-->
+        <!--by-->
+        <!--<span ng-bind="der.created | date:'mediumDate'"></span>-->
+        <!--<span ng-if="der.user" ng-bind="der.user.displayName"></span>-->
+        <!--<span ng-if="!der.user">Deleted User</span>-->
+      <!--</small>-->
+      <!--<h4 class="list-group-item-heading" ng-bind="der.name"></h4>-->
+    <!--</a>-->
+  <!--</div>-->
+  <div class="alert alert-warning text-center" ng-if="vm.ders.$resolved && !vm.ders.length">
+    No Ders yet, why don't you <a ui-sref="ders.create">create one</a>?
+  </div>
+  <div class="row">
+    <p class="text-center">
+      <pagination total-items="filtered.length" items-per-page="vm.pageSize" ng-model="vm.currentPage"></pagination>
+    </p>
+  </div>
+  <div class="navbar-fixed-bottom pading-a">
+    <a ui-sref="ders.create" class="btn btn-danger btn-circle btn-lg pull-right"><i class="glyphicon glyphicon-plus"></i></a>
+  </div>
+</section>

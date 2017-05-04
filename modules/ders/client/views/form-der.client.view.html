@@ -1,0 +1,47 @@
+<section class="container">
+  <div class="page-header">
+    <h1>{{vm.der._id ? 'Dersi Düzenle' : 'Yeni Ders Ekle'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.derForm" class="form-horizontal" ng-submit="vm.save(vm.form.derForm.$valid)" novalidate>
+      <fieldset>
+        <div class="form-group" show-errors>
+          <label class="control-label" for="name">Ders İsmi</label>
+          <input name="name" type="text" ng-model="vm.der.name" id="name" class="form-control" placeholder="İsim" required>
+          <div ng-messages="vm.form.derForm.name.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Ders İsmi Verilmeli</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="description">Açıklama</label>
+          <textarea ui-tinymce="vm.tinymceOptions" name="description" rows="5" ng-model="vm.der.description" id="description" class="form-control" placeholder="Açıklama" required>
+          </textarea>
+          <div>{{vm.der.description}}</div>
+          <div ng-messages="vm.form.derForm.description.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Ders Açıklaması Girin</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label for="kategori">{{vm.der._id ? 'Gözüken Kategoriler' :'Kategori Seç:'}}
+            <span class="label label-info" style="margin-right: 2px;" ng-repeat="a in vm.der.kategoris">{{a.name}}</span>
+          </label>
+          <select class="form-control" size="3" name="kategoriN" id="kategori" ng-model="vm.der.kategoris" multiple required>
+            <option  ng-repeat="option in vm.kategoris" ng-value="option._id">{{option.name}}</option>
+          </select>
+          <div ng-show="vm.form.derForm.kategoriN.$error.required">
+            <p class="help-block error-text">En Az Bir Tane Kategori Seçin</p>
+          </div>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary btn-block">{{vm.der._id ? 'Güncelle' : 'Oluştur'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+
+    </form>
+  </div>
+</section>

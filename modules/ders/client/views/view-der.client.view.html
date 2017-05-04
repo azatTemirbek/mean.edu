@@ -1,0 +1,182 @@
+<section id="course-single">
+  <div class="page">
+    <div class="page-heading text-center">
+      <div class="container">
+        <h2 ng-bind="vm.der.name"></h2>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-9">
+        <img src="modules/core/client/img/images/preview.jpg" alt="Course" class="resp-img course-preview">
+        <h3 ng-bind="vm.der.name"></h3>
+        <p class="class-details">
+          <span class="lessons"><i class="zmdi zmdi-time"></i>
+            <span ng-bind="vm.der.created | date:'mediumDate'"></span>
+          </span>
+          <span class="tag" ng-repeat="kn in vm.der.kategoris"><i class="zmdi zmdi-label"></i>{{kn.name}}, </span>
+        </p>
+        <div class="pull-right"
+             ng-show="vm.der.isCurrentUserOwner">
+          <a class="btn btn-primary"
+             ui-sref="ders.edit({ derId: vm.der._id })">
+            <i class="glyphicon glyphicon-edit"></i>
+          </a>
+          <a class="btn btn-primary" ng-click="vm.remove()">
+            <i class="glyphicon glyphicon-trash"></i>
+          </a>
+        </div>
+        <h4>Ders Detayı</h4>
+        <p class="abs" ng-bind-html="vm.der.description"></p>
+        <!--content goes here-->
+
+        <h4>Yorum Yaz</h4>
+        <h5 ng-hide="vm.authentication.user">Yorum yapmak İçın
+          <a ui-sref="authentication.signin" href="/authentication/signin">Giriş</a>
+          Yap</h5>
+        <form class="contact" name="vm.form.replyForm" ng-show="vm.authentication.user" ng-submit="vm.safe(vm.form.replyForm.$valid)" novalidate>
+          <div class="row">
+            <div class="form-group col-sm-6" show-errors>
+              <label class="control-label req" for="name">İSİM</label>
+              <input name="name" type="text" ng-model="vm.replyR.name" id="name" class="form-control" placeholder="İsmnizi Girin" required>
+              <div ng-messages="vm.form.replyForm.name.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Yanıt adı gerekiyor.</p>
+              </div>
+            </div>
+
+            <div class="form-group col-sm-6" show-errors>
+              <label class="control-label req" for="email">MAİL ADRES</label>
+              <input name="email" type="email" ng-model="vm.replyR.email" id="email" class="form-control" placeholder="Mail Adress Girin" lowercase required>
+              <div ng-messages="vm.form.replyForm.name.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">E-posta adresi gerekiyor.</p>
+                <p class="help-block error-text" ng-message="email">E-posta  adresi geçersiz.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="form-group col-sm-12" show-errors>
+              <label class="control-label req" for="contentR">MESAJ</label>
+              <textarea rows="auto" name="contentR" id="contentR" ng-model="vm.replyR.contentR" class="form-control" placeholder="Mesaj" required>
+              </textarea>
+              <div ng-messages="vm.form.replyForm.name.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Yorum mesajı gerekiyor.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row clearfix">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <div class="pull-right">
+                  <button type="submit" class="greybutton">GÖNDER</button>
+                </div>
+              </div>
+              <div ng-show="vm.error" class="text-danger">
+                <strong ng-bind="vm.error"></strong>
+              </div>
+            </div>
+          </div>
+        </form>
+
+
+
+        <h4 class="text-center">YORUMLAR</h4>
+        <div class="comment subcomment clearfix" ng-repeat="rep in vm.replys">
+          <img ng-src="{{rep.user.profileImageURL}}" alt="{{rep.user.displayName}}" class="img-responsive img-circle pull-left">
+          <a href="#">{{rep.name}}</a>
+          <span class="postedon" ng-bind="rep.created | date:'mediumDate'"></span>
+          <p class="abs" ng-bind="rep.contentR">
+          </p>
+        </div>
+
+
+
+      </div>
+      <div class="col-md-3">
+        <div class="order text-center">
+          <p class="price">59</p>
+          <p>SAATLIK TEK FİYAT</p>
+          <a href="#" class="blueplay">BU DERSİ SATIN AL</a>
+          <p class="order-or"><span>OR</span></p>
+          <p>ŞİMDI BAŞLA</p>
+        </div>
+        <div class="pros">
+          <h4>ÖĞRETMEN HAKKINDA</h4>
+          <div class="teacher text-center">
+            <div class="">
+              <img class="img-responsive img-circle Avatar" ng-src="{{vm.der.user.profileImageURL}}" alt="{{vm.der.user.displayName}}" />
+            </div>
+            <a href="#">
+              <span ng-if="vm.der.user"
+                    ng-bind="vm.der.user.displayName">
+              </span>
+              <span ng-if="!vm.der.user">Silinmiş Kullanıcı</span>
+            </a>
+            <p ng-if="vm.der.user.job"
+                  ng-bind="vm.der.user.job">
+            </p>
+            <ul class="social">
+              <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li><li>
+              <a href="#"><i class="zmdi zmdi-twitter"></i></a></li><li>
+              <a href="#"><i class="zmdi zmdi-google-old"></i></a></li><li>
+              <a href="#"><i class="zmdi zmdi-pinterest"></i></a></li><li>
+              <a href="#"><i class="zmdi zmdi-email"></i></a></li><li>
+              <a href="#"><i class="zmdi zmdi-globe-alt"></i></a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="ratings">
+          <h4>DERS DEĞERLENDIRMESİ</h4>
+          <div class="rating">
+            <a href="#" class="on"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
+            <a href="#" class="on"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
+            <a href="#" class="on"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
+            <a href="#" class="on"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
+            <a href="#"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
+          </div>
+          <p>(37 YANIT, ORTALAMSI:<strong>4.8</strong> out of 5)</p>
+        </div>
+        <div class="popular-courses index-3-categories">
+          <h4>PÖPÜLER DERSLER</h4>
+          <div class="courses-side-slick">
+            <div class="category-with-bg text-center cat1">
+              <h5>LYS MATEMETİK</h5>
+              <p>Lise matematiği</p>
+              <a href="#" class="goto"><i class="zmdi zmdi-long-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

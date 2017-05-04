@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Kategoris</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="kategori in vm.kategoris"
+       ui-sref="kategoris.view({ kategoriId: kategori._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="kategori.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="kategori.user" ng-bind="kategori.user.displayName"></span>
+        <span ng-if="!kategori.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="kategori.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.kategoris.$resolved && !vm.kategoris.length">
+    No Kategoris yet, why don't you <a ui-sref="kategoris.create">create one</a>?
+  </div>
+</section>

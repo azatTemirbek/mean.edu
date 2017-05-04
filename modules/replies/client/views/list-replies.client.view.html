@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Replies</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="reply in vm.replies"
+       ui-sref="replies.view({ replyId: reply._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="reply.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="reply.user" ng-bind="reply.user.displayName"></span>
+        <span ng-if="!reply.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="reply.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.replies.$resolved && !vm.replies.length">
+    No Replies yet, why don't you <a ui-sref="replies.create">create one</a>?
+  </div>
+</section>
