@@ -46,6 +46,8 @@
     "method-override": "^2.3.3",
     "mocha": "~1.20.0",
     "mongoose": "~4.2.3",
+    "mongoose-relationships": "^0.4.0",
+    "mongoose-unique-validator": "^1.0.5",
     "morgan": "^1.6.1",
     "multer": "~1.0.5",
     "nodemailer": "^1.4.0",

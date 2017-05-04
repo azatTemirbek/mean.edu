@@ -7,7 +7,7 @@
         </button>
       </div>
 
-    <nav class="collapse navbar-collapse" style="margin-top: -55px;" collapse="!isCollapsed" role="navigation">
+    <nav class="collapse navbar-collapse" style="margin-top: -25px;" collapse="!isCollapsed" role="navigation">
       <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
         <li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">
           <a ng-switch-when="dropdown" class="dropdown-toggle" dropdown-toggle role="button">{{::item.title}}&nbsp;<span class="caret"></span></a>
@@ -19,23 +19,27 @@
           <a ng-switch-default ui-sref="{{item.state}}" ng-bind="item.title"></a>
         </li>
       </ul>
+      <ul class="navbar-right">
+        <li class="search" style="margin: 0px 15px;">
+          <a href="#" class="search s-icon"><i class="zmdi zmdi-search zmdi-hc-lg"></i></a>
+          <div class="search-something">
+            <input type="search" placeholder="search for something">
+            <a href="#"><i class="zmdi zmdi-search"></i></a>
+          </div>
+        </li>
+      </ul>
       <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
         <li ui-sref-active="active">
-          <div class="pading-top-30">
             <a ui-sref="authentication.signup">Sign Up</a>
-          </div>
         </li>
         <li class="divider-vertical"></li>
         <li ui-sref-active="active">
-          <div class="pading-top-30">
             <a ui-sref="authentication.signin">Sign In</a>
-          </div>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
         <li class="dropdown" dropdown>
-          <a class="dropdown-toggle user-header-dropdown-toggle pdi-15" dropdown-toggle role="button">
-            <img ng-src="{{authentication.user.profileImageURL}}" alt="{{authentication.user.displayName}}" class="header-profile-image" />
+          <a class="dropdown-toggle" dropdown-toggle role="button">
             <span ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
           </a>
           <ul class="dropdown-menu" role="menu">
@@ -58,17 +62,7 @@
           </ul>
         </li>
       </ul>
-      <ul class="navbar-right">
-        <li>
-          <div class="search pading-top-30">
-            <a href="#" class="search"><i class="zmdi zmdi-search zmdi-hc-lg"></i></a>
-            <div class="search-something">
-              <input type="search" placeholder="search for something">
-              <a href="#"><i class="zmdi zmdi-search"></i></a>
-            </div>
-          </div>
-        </li>
-      </ul>
+
     </nav>
   </div>
 </div>

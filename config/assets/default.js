@@ -7,10 +7,11 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
-        'public/lib/jquery-ui/jquery-ui.min.css',
         'public/lib/material-design-iconic-font/css/material-design-iconic-font.min.css',
         'public/lib/rslides/responsiveslides.css',
+        'public/lib/jquery-ui/jquery-ui.min.css',
         'public/lib/slick/slick.css',
+        'public/lib/tinymce/skins/lightgray/skin.min.css',
       ],
       js: [
         'public/lib/angular/angular.js',
@@ -24,9 +25,13 @@ module.exports = {
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/jquery/dist/jquery.min.js',
         'public/lib/rslides/responsiveslides.min.js',
-        'public/lib/jquery-ui/jquery-ui.min.js',
         'public/lib/slick/slick.min.js',
-        'public/lib/js/main.js',
+        'public/lib/jquery-ui/jquery-ui.min.js',
+        'public/lib/wysihtml5x/dist/wysihtml5x.min.js',
+        'public/lib/tinymce/tinymce.min.js',
+        'public/lib/angular-ui-tinymce/dist/tinymce.min.js',
+        'public/lib/angular-sanitize/angular-sanitize.min.js',
+
       ],
       tests: ['public/lib/angular-mocks/angular-mocks.js']
     },

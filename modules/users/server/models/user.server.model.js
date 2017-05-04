@@ -74,6 +74,9 @@ var UserSchema = new Schema({
     type: String,
     required: 'Provider is required'
   },
+  job: {
+    type: String,
+  },
   providerData: {},
   additionalProvidersData: {},
   roles: {

@@ -11,6 +11,7 @@ module.exports = {
         'public/lib/material-design-iconic-font/css/material-design-iconic-font.min.css',
         'public/lib/rslides/responsiveslides.css',
         'public/lib/slick/slick.css',
+        'public/lib/tinymce/skins/lightgray/skin.min.css',
       ],
       js: [
         'public/lib/angular/angular.min.js',
@@ -24,9 +25,14 @@ module.exports = {
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/jquery/dist/jquery.min.js',
         'public/lib/rslides/responsiveslides.min.js',
-        'public/lib/jquery-ui/jquery-ui.min.js',
         'public/lib/slick/slick.min.js',
-        'public/lib/js/main.js',
+        'public/lib/jquery-ui/jquery-ui.min.js',
+        'public/lib/wysihtml5x/dist/wysihtml5x.min.js',
+        'public/lib/tinymce/tinymce.min.js',
+        'public/lib/angular-ui-tinymce/dist/tinymce.min.js',
+        'public/lib/angular-sanitize/angular-sanitize.min.js',
+
+
       ]
     },
     css: 'public/dist/application.min.css',

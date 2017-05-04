@@ -27,6 +27,7 @@ spaces_in_brackets = false
 [**.yml, **.css]
 trim_trailing_whitespace = true
 indent_style = tab
+indent_size = 2
 
 [**.html]
 trim_trailing_whitespace = true
