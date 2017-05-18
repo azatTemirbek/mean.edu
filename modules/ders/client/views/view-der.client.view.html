@@ -9,7 +9,32 @@
   <div class="container">
     <div class="row">
       <div class="col-md-9">
-        <img src="modules/core/client/img/images/preview.jpg" alt="Course" class="resp-img course-preview">
+        <div class="row">
+          <div class="col-xs-12">
+            <gm-map center="[ vm.coords.lat, vm.coords.lng ]" zoom="vm.coords.zoom" mapTypeId="google.maps.MapTypeId.ROADMAP" >
+              <gm-marker
+                position="[ vm.der.coords.lat, vm.der.coords.lng ]" options="{draggable: false}"
+                on-dragend="vm.coords = marker.getPosition()"
+              ></gm-marker>
+              <gm-marker
+                position="[ vm.coordsR.lat, vm.coordsR.lng ]" options="{draggable: true, label: 'ben', icon: 'http://maps.google.com/mapfiles/ms/micons/blue.png'}"
+                on-dragend="marker.getPosition()"
+              ></gm-marker>
+            </gm-map>
+          </div>
+          <a class="btn btn-success lolinside pull-right" href="http://maps.google.com/maps?saddr={{vm.coordsR.lat}},{{vm.coordsR.lng}}&daddr={{vm.der.coords.lat}},{{vm.der.coords.lng}}"  >
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            Navigasyon
+          </a>
+          <style>
+            .lolinside{
+              position: relative;
+              margin-top: -50px;
+              margin-right: 10%;
+
+            }
+          </style>
+        </div>
         <h3 ng-bind="vm.der.name"></h3>
         <p class="class-details">
           <span class="lessons"><i class="zmdi zmdi-time"></i>
@@ -37,7 +62,7 @@
           Yap</h5>
         <form class="contact" name="vm.form.replyForm" ng-show="vm.authentication.user" ng-submit="vm.safe(vm.form.replyForm.$valid)" novalidate>
           <div class="row">
-            <div class="form-group col-sm-6" show-errors>
+            <div class="form-group col-sm-4" show-errors>
               <label class="control-label req" for="name">İSİM</label>
               <input name="name" type="text" ng-model="vm.replyR.name" id="name" class="form-control" placeholder="İsmnizi Girin" required>
               <div ng-messages="vm.form.replyForm.name.$error" role="alert">
@@ -45,12 +70,23 @@
               </div>
             </div>
 
-            <div class="form-group col-sm-6" show-errors>
+            <div class="form-group col-sm-4" show-errors>
               <label class="control-label req" for="email">MAİL ADRES</label>
               <input name="email" type="email" ng-model="vm.replyR.email" id="email" class="form-control" placeholder="Mail Adress Girin" lowercase required>
-              <div ng-messages="vm.form.replyForm.name.$error" role="alert">
+              <div ng-messages="vm.form.replyForm.email.$error" role="alert">
                 <p class="help-block error-text" ng-message="required">E-posta adresi gerekiyor.</p>
                 <p class="help-block error-text" ng-message="email">E-posta  adresi geçersiz.</p>
+              </div>
+            </div>
+            <div class="form-group col-sm-4" show-errors>
+              <label class="control-label req" for="rating">Rating</label>
+              <p uib-rating ng-model="vm.replyR.rating" max="10" class="form-control" read-only="false" on-hover="vm.hoveringOver(value)" on-leave="vm.overStar = null"  aria-labelledby="default-rating"></p>
+              <span class="label" ng-class="{'label-warning': vm.percent<30, 'label-info': vm.percent>=30 && vm.percent<70, 'label-success': vm.percent>=70}" ng-show="vm.overStar">{{vm.percent}}%</span>
+
+
+              <input name="text" type="text" ng-model="vm.replyR.rating" id="rating" class="form-control" required>
+              <div ng-messages="vm.form.replyForm.rating.$error" role="alert">
+                <p class="help-block error-text" ng-message="required"> Değerlendirme gerekiyor.</p>
               </div>
             </div>
           </div>
@@ -100,13 +136,13 @@
           <p>SAATLIK TEK FİYAT</p>
           <a href="#" class="blueplay">BU DERSİ SATIN AL</a>
           <p class="order-or"><span>OR</span></p>
-          <p>ŞİMDI BAŞLA</p>
+          <p>ŞİMDI BAŞLAz</p>
         </div>
         <div class="pros">
           <h4>ÖĞRETMEN HAKKINDA</h4>
           <div class="teacher text-center">
             <div class="">
-              <img class="img-responsive img-circle Avatar" ng-src="{{vm.der.user.profileImageURL}}" alt="{{vm.der.user.displayName}}" />
+              <img class="img-responsive img-circle Avatar center-block" ng-src="{{vm.der.user.profileImageURL}}" alt="{{vm.der.user.displayName}}" />
             </div>
             <a href="#">
               <span ng-if="vm.der.user"
@@ -138,19 +174,19 @@
           </div>
           <p>(37 YANIT, ORTALAMSI:<strong>4.8</strong> out of 5)</p>
         </div>
-        <div class="popular-courses index-3-categories">
-          <h4>PÖPÜLER DERSLER</h4>
-          <div class="courses-side-slick">
-            <div class="category-with-bg text-center cat1">
-              <h5>LYS MATEMETİK</h5>
-              <p>Lise matematiği</p>
-              <a href="#" class="goto"><i class="zmdi zmdi-long-arrow-right"></i></a>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
+<div class="row">
+  <div class="col-xs-12">
+
+    <h4>Default</h4>
+    <span uib-rating ng-model="vm.rate" max="vm.max" read-only="vm.isReadonly" on-hover="vm.hoveringOver(value)" on-leave="vm.overStar = null"  aria-labelledby="default-rating"></span>
+    <span class="label" ng-class="{'label-warning': vm.percent<30, 'label-info': vm.percent>=30 && vm.percent<70, 'label-success': vm.percent>=70}" ng-show="vm.overStar && !vm.isReadonly">{{vm.percent}}%</span>
+
+    </div>
+</div>
 
 
 </section>

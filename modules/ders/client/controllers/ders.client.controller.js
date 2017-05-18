@@ -6,9 +6,29 @@
     .module('ders')
     .controller('DersController', DersController);
 
-  DersController.$inject = ['$scope', '$state', '$window', 'Authentication', 'derResolve', 'KategorisService', 'RepliesService', 'repliesService2'];
+  DersController.$inject = [
+    '$scope',
+    '$state',
+    '$window',
+    'Authentication',
+    'derResolve',
+    'KategorisService',
+    'RepliesService',
+    'repliesService2',
+    'geolocation'
+  ];
 
-  function DersController ($scope, $state, $window, Authentication, der, KategorisService, RepliesService, repliesService2) {
+  function DersController (
+    $scope,
+    $state,
+    $window,
+    Authentication,
+    der,
+    KategorisService,
+    RepliesService,
+    repliesService2,
+    geolocation
+  ) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -23,26 +43,39 @@
       toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
     };
     // getting all post
-    vm.replys = repliesService2.query({ replyDerId: vm.der._id });
-    vm.replyR={};
-    vm.replyR.dersId = vm.der._id;
-    vm.safe = safe;
     function safe(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.replyForm');
         return false;
       }
       RepliesService.save(vm.replyR);
-      vm.replyR={};
+      vm.replyR = {};
       vm.replys = repliesService2.query({ replyDerId: vm.der._id });
     }
 
+    if (vm.der._id) {
+      // edit yaparken
+      vm.replys = repliesService2.query({ replyDerId: vm.der._id });
+      vm.replyR = {};
+      vm.replyR.dersId = vm.der._id;
+      vm.safe = safe;
+      vm.coords=vm.der.coords;
+    }else {
+      // new yaparken
+      vm.coords={ lat:39, lng:32, zoom: 5 };
+    }
 
+    console.log(vm.coords);
 
+    geolocation.getLocation().then(function(data){
+      vm.coordsR = { lat:data.coords.latitude, lng:data.coords.longitude, zoom:16 };
+    });
 
-
-
-
+    vm.findMe = function () {
+      geolocation.getLocation().then(function(data){
+        vm.coords = { lat:data.coords.latitude, lng:data.coords.longitude, zoom:16 };
+      });
+    };
 
 
     // Remove existing Der
@@ -53,13 +86,23 @@
     }
 
 
+    vm.hoveringOver = function(value) {
+      vm.overStar = value;
+      vm.percent = 100 * (value / 10);
+    };
+
+    vm.ratingStates = [
+      {stateOn: 'glyphicon-star on', stateOff: 'glyphicon-star-empty'},
+    ];
+
+
     // Save Der
     function save(isValid) {
       if (!isValid) {
         $scope.$broadcast('show-errors-check-validity', 'vm.form.derForm');
         return false;
       }
-
+      vm.der.coords=vm.coords;
       // TODO: move create/update logic to service
       if (vm.der._id) {
         vm.der.$update(successCallback, errorCallback);

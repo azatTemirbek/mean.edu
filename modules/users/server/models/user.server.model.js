@@ -74,9 +74,6 @@ var UserSchema = new Schema({
     type: String,
     required: 'Provider is required'
   },
-  job: {
-    type: String,
-  },
   providerData: {},
   additionalProvidersData: {},
   roles: {
@@ -87,12 +84,33 @@ var UserSchema = new Schema({
     default: ['user'],
     required: 'Please provide at least one role'
   },
+  // custom fields
+  job: {
+    type: String,
+  },
+  tel: {
+    type: String,
+    requred: 'Tel No Gerekiyor'
+  },
+  universite: {
+    type: String,
+    requred: 'Mezun Okulu Gerekiyor'
+  },
+  konum: [{
+    type: Schema.ObjectId,
+    ref: 'Konum'
+  }],
+  point: {
+    type: Number,
+    default: 0
+  },
+  /*custo finish*/
   updated: {
     type: Date
   },
   created: {
     type: Date,
-    default: Date.now
+    default: Date.nows
   },
   /* For reset password */
   resetPasswordToken: {

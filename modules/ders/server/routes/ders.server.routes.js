@@ -17,6 +17,9 @@ module.exports = function(app) {
     .put(ders.update)
     .delete(ders.delete);
 
+  app.route('/api/ders/:lat/:lng/:rad')
+    .get(ders.nearMap);
+
   // Finish by binding the Der middleware
   app.param('derId', ders.derByID);
 };

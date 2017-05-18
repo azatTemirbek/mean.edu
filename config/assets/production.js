@@ -31,8 +31,8 @@ module.exports = {
         'public/lib/tinymce/tinymce.min.js',
         'public/lib/angular-ui-tinymce/dist/tinymce.min.js',
         'public/lib/angular-sanitize/angular-sanitize.min.js',
-
-
+        'public/lib/angularjs-geolocation/src/geolocation.js',
+        'public/lib/angular-google-maps-native/dist/angular-google-maps-native.min.js',
       ]
     },
     css: 'public/dist/application.min.css',

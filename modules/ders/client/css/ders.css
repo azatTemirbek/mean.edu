@@ -2,4 +2,11 @@
 .pros, .social, .ratings, .popular-courses, .index-3-categories{
     margin-top: 55px;
 }
-
+gm-map {
+    display: block;
+    width: 100%;
+    height: 300px;
+}
+.tutorial{
+    margin-bottom: 20%;
+}

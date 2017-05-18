@@ -9,6 +9,18 @@
 
   function routeConfig($stateProvider) {
     $stateProvider
+      .state('harita', {
+        url: '/harita',
+        templateUrl: 'modules/ders/client/views/harita.client.view.html',
+        controller: 'HaritaController',
+        controllerAs: 'vm'
+      })
+      .state('goruntulu', {
+        url: '/goruntulu',
+        templateUrl: 'modules/ders/client/views/goruntulu.client.view.html',
+        controller: 'GoruntuluController',
+        controllerAs: 'vm'
+      })
       .state('ders', {
         abstract: true,
         url: '/ders',

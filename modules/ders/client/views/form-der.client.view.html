@@ -17,9 +17,24 @@
           <label class="control-label" for="description">Açıklama</label>
           <textarea ui-tinymce="vm.tinymceOptions" name="description" rows="5" ng-model="vm.der.description" id="description" class="form-control" placeholder="Açıklama" required>
           </textarea>
-          <div>{{vm.der.description}}</div>
           <div ng-messages="vm.form.derForm.description.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Ders Açıklaması Girin</p>
+          </div>
+        </div>
+        <!--map-->
+        <div class="form-group">
+          <div class="row">
+            <div class="col-xs-12">
+              <gm-map center="[ vm.coords.lat, vm.coords.lng ]" zoom="vm.coords.zoom" mapTypeId="google.maps.MapTypeId.ROADMAP" >
+                <gm-marker
+                  position="map.getCenter()" options="{draggable: true}"
+                  on-dragend="vm.coords = marker.getPosition()"
+                ></gm-marker>
+              </gm-map>
+            </div>
+            <div class="col-xs-12">
+              <button type="button" class="btn btn-default pull-right" ng-click="vm.findMe()" ><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>  Beni Bul</button>
+            </div>
           </div>
         </div>
 
@@ -34,6 +49,7 @@
             <p class="help-block error-text">En Az Bir Tane Kategori Seçin</p>
           </div>
         </div>
+
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block">{{vm.der._id ? 'Güncelle' : 'Oluştur'}}</button>
         </div>

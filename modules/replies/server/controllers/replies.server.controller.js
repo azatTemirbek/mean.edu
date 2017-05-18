@@ -117,6 +117,7 @@ exports.replyByID = function(req, res, next, id) {
 };
 
 exports.listWithParams = function(req, res) {
+  if(req.params.replyDerId===''){ return; }
   Reply.find({ dersId: req.params.replyDerId })
     .sort('-created')
     .populate('user', 'displayName profileImageURL')

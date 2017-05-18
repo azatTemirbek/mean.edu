@@ -14,10 +14,10 @@ var path = require('path'),
  * Create a Der
  */
 exports.create = function(req, res) {
-  console.log("create method called");
   var der = new Der(req.body);
   der.user = req.user;
   der.kategori = req.kategoris;
+  console.log(req.body);
   // der.description = req.description;
 
   der.save(function(err) {
@@ -97,6 +97,39 @@ exports.list = function(req, res) {
 };
 
 /**
+ * Ders nearMap
+ */
+exports.nearMap = function (req, res) {
+  var lat = req.params.lat;
+  var lng = req.params.lng;
+  var rad = req.params.rad;
+  var gtex = lat-rad;
+  var ltx = Number(lat)+Number(rad);
+  var gtey = lng-rad;
+  var lty = Number(lng)+Number(rad);
+
+  // { $and: [
+  //   { coords:lat: { $gte: gtex, $lt: ltx } },
+  //   { coords:lng: { $gte: gtey, $lt: lty } } ]
+  // }
+
+  Der.find()
+    .where("coords.lat").gt(gtex).lt(ltx)
+    .where("coords.lng").gt(gtey).lt(lty)
+    .exec(function (err, ders) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.jsonp(ders);
+        console.log(ders);
+      }
+    });
+};
+
+
+/**
  * Der middleware
  */
 exports.derByID = function(req, res, next, id) {
@@ -112,7 +145,7 @@ exports.derByID = function(req, res, next, id) {
       return next(err);
     } else if (!der) {
       return res.status(404).send({
-        message: 'No Der with that identifier has been found'
+        message: 'Boyle Bir Ders bulunamadi'
       });
     }
     req.der = der;

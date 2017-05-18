@@ -7,7 +7,7 @@
 
   <div class="container popular">
     <div class="row toolbar">
-      <div class="col-md-3 col-sm-6 col-xs-12">
+      <div class="col-md-6 col-sm-6 col-xs-12">
         <div class="form-group">
           <select class="form-control" id="sel1" ng-model="vm.search.kategoris.name">
             <option selected value="" disabled hidden>Kategori Seç</option>
@@ -15,27 +15,13 @@
           </select>
         </div>
       </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <select class="form-control">
-          <option>Öğretmen Seçin</option>
-          <option value="1">Teacher 1</option>
-          <option value="2">Teacher 2</option>
-          <option value="3">Teacher 3</option>
-        </select>
-      </div>
-      <div class="col-md-3 col-sm-6 col-xs-12">
-        <select class="form-control">
-          <option>Sırala</option>
-          <option value="1">sort by 1</option>
-          <option value="2">sort by 2</option>
-          <option value="3">sort by 3</option>
-        </select>
+      <div class="col-md-4 col-sm-6 col-xs-12">
+        <input class="form-control" ng-model="vm.search.$" type="text" placeholder="Anahtar kelime">
       </div>
       <div class="col-md-2 col-sm-6 col-xs-12">
-        <input class="form-control" ng-model="vm.search.$" id="kategories" type="text" placeholder="Anahtar kelime">
-      </div>
-      <div class="col-md-1 col-sm-6 col-xs-12">
-        <button class="btn btn-primary">ARA</button>
+        <button class="btn btn-primary">
+          <i class="fa fa-search" aria-hidden="true"></i>
+          ARA</button>
       </div>
     </div>
     <div class="row tutorials">
@@ -64,7 +50,7 @@
                 <p><i class="zmdi zmdi-account-circle"></i> <span ng-if="der.user" ng-bind="der.user.displayName"></span>
                   <span class="lessons pull-right"><i class="zmdi zmdi-time"></i> {{der.created | date:'mediumDate'}}</span>
                 </p>
-                <p class="abs">{{der.description}}</p>
+                <p class="abs" ng-bind-html="der.description | limitTo: 100 " ></p>
                 <a ui-sref="ders.view({ derId: der._id })" class="greybutton">DERSİ İNCELE</a>
               </div>
             </div>

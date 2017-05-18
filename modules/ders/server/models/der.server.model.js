@@ -36,6 +36,18 @@ var DerSchema = new Schema({
     default: '',
     trim: true
   }],
+  coords: {
+    lat: {
+      type: Number
+    },
+    lng:{
+      type: Number
+    },
+    zoom:{
+      type: Number,
+      default: 10
+    }
+  },
   created: {
     type: Date,
     default: Date.now
