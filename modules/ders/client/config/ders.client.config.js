@@ -18,13 +18,13 @@
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'ders', {
-      title: 'List Ders',
+      title: 'Ders Listesi',
       state: 'ders.list'
     });
 
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'ders', {
-      title: 'Create Der',
+      title: 'Yeni Ders',
       state: 'ders.create',
       roles: ['user']
     });
