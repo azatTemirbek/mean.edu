@@ -1,0 +1,77 @@
+<section>
+  <div class="row">
+    <div class="col-xs-12">
+      <gm-map center="[ vm.currentPositionB.lat, vm.currentPositionB.lng ]" zoom="vm.currentPositionB.zoom" mapTypeId="google.maps.MapTypeId.ROADMAP" >
+        <gm-marker
+          position="[ vm.currentPositionB.lat, vm.currentPositionB.lng ]" options="{draggable: false, icon: 'http://maps.google.com/mapfiles/ms/micons/man.png' }"
+        ></gm-marker>
+
+
+
+        <gm-marker ng-repeat="mark in vm.nearMap"
+                   position="[ mark.coords.lat, mark.coords.lng ]"
+                   options="{ draggable: false, clickable: true}"
+                   on-click="vm.selected = mark"
+        >
+          <gm-infowindow ng-show="vm.selected===mark"
+                         options="{ content: 'Seçili Olan' }"
+                         on-closeclick="vm.selected = ''"
+          >
+          </gm-infowindow>
+        </gm-marker>
+      </gm-map>
+    </div>
+    <div class="col-xs-12">
+      <hr>
+      <div class="row">
+        <div class="col-xs-4">
+          <select class="form-control" ng-model="vm.rad">
+            <option value="0.01">1 Kilometre</option>
+            <option value="0.1">10 Kilometre</option>
+            <option value="0.5">50 Kilometre</option>
+            <option value="0.9">100 Kilometre</option>
+          </select>
+        </div>
+        <div class="col-xs-4">
+          <button class="btn btn-default " ng-click="vm.fetch(vm.rad)" >
+            <i class="fa fa-compass" aria-hidden="true"></i>
+             Yakınımda Bul
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dialo well center-block text-center" ng-show="vm.selected">
+    <br>
+      <a class="btn btn-info" ui-sref="ders.view({ derId: vm.selected._id })">
+        <span class="glyphicon glyphicon-book aria-hidden="true"></span>
+        Dersi İncele
+      </a>
+      <a class="btn btn-success" href="http://maps.google.com/maps?saddr={{vm.currentPositionB.lat}},{{vm.currentPositionB.lng}}&daddr={{vm.selected.coords.lat}},{{vm.selected.coords.lng}}"  >
+        <i class="fa fa-location-arrow" aria-hidden="true"></i>
+        Navigasyon
+      </a>
+      <a class="btn btn-danger " ng-click="vm.selected = ''" >
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        Kapat
+      </a>
+  </div>
+
+
+<style>
+  .dialo{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+    max-width: 80%;
+    min-width: 300px;
+    padding:2%;
+  }
+</style>
+
+
+
+</section>
