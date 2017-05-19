@@ -38,6 +38,7 @@
     vm.form = {};
     vm.remove = remove;
     vm.save = save;
+    vm.safe = safe;
     vm.tinymceOptions = {
       plugins: 'link image code',
       toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
@@ -49,23 +50,31 @@
         return false;
       }
       RepliesService.save(vm.replyR);
-      vm.replyR = {};
-      vm.replys = repliesService2.query({ replyDerId: vm.der._id });
+      fillComments();
     }
 
     if (vm.der._id) {
       // edit yaparken
-      vm.replys = repliesService2.query({ replyDerId: vm.der._id });
-      vm.replyR = {};
-      vm.replyR.dersId = vm.der._id;
-      vm.safe = safe;
+      fillComments();
       vm.coords=vm.der.coords;
     }else {
       // new yaparken
       vm.coords={ lat:39, lng:32, zoom: 5 };
     }
+    function fillComments() {
+      vm.replys = repliesService2.query({ replyDerId: vm.der._id });
+      vm.replyR = {};
+      vm.replyR.dersId = vm.der._id;
+      vm.safe = safe;
+      vm.sum=0;
+      vm.replys.$promise.then(function (data) {
+        for (var i=0; i<data.length; i++){
+          vm.sum= +vm.sum + data[i].rating;
+        }
+        vm.avar=vm.sum/data.length;
+      });
+    }
 
-    console.log(vm.coords);
 
     geolocation.getLocation().then(function(data){
       vm.coordsR = { lat:data.coords.latitude, lng:data.coords.longitude, zoom:16 };
@@ -91,9 +100,7 @@
       vm.percent = 100 * (value / 10);
     };
 
-    vm.ratingStates = [
-      {stateOn: 'glyphicon-star on', stateOff: 'glyphicon-star-empty'},
-    ];
+    vm.date=new Date();
 
 
     // Save Der

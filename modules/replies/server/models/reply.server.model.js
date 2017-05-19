@@ -16,21 +16,16 @@ var ReplySchema = new Schema({
     required: 'Please fill Reply name',
     trim: true
   },
-  name: {
-    type: String,
-    default: '',
-    required: 'Please fill Reply name',
-    trim: true
-  },
-  email: {
-    type: String,
-    default: '',
-    required: 'Please fill Reply name',
-    trim: true
-  },
   created: {
     type: Date,
     default: Date.now
+  },
+  rating: {
+    type: Number,
+    required: true,
+    default: 1,
+    min: [1, 'En az bir yildiz seçmelisin!'],
+    max: 10
   },
   dersId: {
     type: Schema.ObjectId,

@@ -165,7 +165,6 @@ h3::after{
 }
 
 nav > ul > li > a{
-  font-family: "Work Sans", sans-serif;
   font-size: 13px;
   font-weight: 500;
   color: #fff;
@@ -439,6 +438,10 @@ nav > ul > li:hover .submenu{
   position: absolute;
   top: 42px;
   left: 125px;
+}
+
+.glyphicon {
+  font-family: 'Material-Design-Iconic-Font' !important;
 }
 
 .cart .cart-container .cart-item .remove{

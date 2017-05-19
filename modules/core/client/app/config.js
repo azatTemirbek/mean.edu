@@ -10,7 +10,6 @@ var ApplicationConfiguration = (function () {
     'ngMessages',
     'ui.router',
     'ui.bootstrap',
-    'ui.bootstrap.rating',
     'ui.utils',
     'angularFileUpload',
     'ui.tinymce',

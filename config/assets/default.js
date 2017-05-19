@@ -8,6 +8,7 @@ module.exports = {
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
         'public/lib/material-design-iconic-font/css/material-design-iconic-font.min.css',
+        'public/lib/components-font-awesome/css/font-awesome.min.css',
         'public/lib/rslides/responsiveslides.css',
         'public/lib/jquery-ui/jquery-ui.min.css',
         'public/lib/slick/slick.css',

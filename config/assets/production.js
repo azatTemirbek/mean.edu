@@ -4,14 +4,16 @@ module.exports = {
   client: {
     lib: {
       css: [
-        'public/lib/bootstrap/dist/css/bootstrap.min.css',
-        'public/lib/bootstrap/dist/css/bootstrap-theme.min.css',
+        'public/lib/bootstrap/dist/css/bootstrap.css',
+        'public/lib/bootstrap/dist/css/bootstrap-theme.css',
         'public/lib/angular-ui-notification/dist/angular-ui-notification.css',
-        'public/lib/jquery-ui/jquery-ui.min.css',
         'public/lib/material-design-iconic-font/css/material-design-iconic-font.min.css',
+        'public/lib/components-font-awesome/css/font-awesome.min.css',
         'public/lib/rslides/responsiveslides.css',
+        'public/lib/jquery-ui/jquery-ui.min.css',
         'public/lib/slick/slick.css',
         'public/lib/tinymce/skins/lightgray/skin.min.css',
+
       ],
       js: [
         'public/lib/angular/angular.min.js',

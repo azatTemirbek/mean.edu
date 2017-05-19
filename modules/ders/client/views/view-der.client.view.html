@@ -22,7 +22,7 @@
               ></gm-marker>
             </gm-map>
           </div>
-          <a class="btn btn-success lolinside pull-right" href="http://maps.google.com/maps?saddr={{vm.coordsR.lat}},{{vm.coordsR.lng}}&daddr={{vm.der.coords.lat}},{{vm.der.coords.lng}}"  >
+          <a class="btn btn-success lolinside pull-right" href="http://maps.google.com/maps?saddr=Current+Location&daddr={{vm.der.coords.lat}},{{vm.der.coords.lng}}"  >
             <i class="fa fa-location-arrow" aria-hidden="true"></i>
             Navigasyon
           </a>
@@ -46,87 +46,87 @@
              ng-show="vm.der.isCurrentUserOwner">
           <a class="btn btn-primary"
              ui-sref="ders.edit({ derId: vm.der._id })">
-            <i class="glyphicon glyphicon-edit"></i>
+            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
           </a>
           <a class="btn btn-primary" ng-click="vm.remove()">
-            <i class="glyphicon glyphicon-trash"></i>
+            <i class="fa fa-trash-o" aria-hidden="true"></i>
           </a>
         </div>
         <h4>Ders Detayı</h4>
         <p class="abs" ng-bind-html="vm.der.description"></p>
         <!--content goes here-->
 
-        <h4>Yorum Yaz</h4>
+        <h4 class="text-center">YORUM YAZ</h4>
         <h5 ng-hide="vm.authentication.user">Yorum yapmak İçın
           <a ui-sref="authentication.signin" href="/authentication/signin">Giriş</a>
           Yap</h5>
         <form class="contact" name="vm.form.replyForm" ng-show="vm.authentication.user" ng-submit="vm.safe(vm.form.replyForm.$valid)" novalidate>
-          <div class="row">
-            <div class="form-group col-sm-4" show-errors>
-              <label class="control-label req" for="name">İSİM</label>
-              <input name="name" type="text" ng-model="vm.replyR.name" id="name" class="form-control" placeholder="İsmnizi Girin" required>
-              <div ng-messages="vm.form.replyForm.name.$error" role="alert">
-                <p class="help-block error-text" ng-message="required">Yanıt adı gerekiyor.</p>
-              </div>
-            </div>
-
-            <div class="form-group col-sm-4" show-errors>
-              <label class="control-label req" for="email">MAİL ADRES</label>
-              <input name="email" type="email" ng-model="vm.replyR.email" id="email" class="form-control" placeholder="Mail Adress Girin" lowercase required>
-              <div ng-messages="vm.form.replyForm.email.$error" role="alert">
-                <p class="help-block error-text" ng-message="required">E-posta adresi gerekiyor.</p>
-                <p class="help-block error-text" ng-message="email">E-posta  adresi geçersiz.</p>
-              </div>
-            </div>
-            <div class="form-group col-sm-4" show-errors>
-              <label class="control-label req" for="rating">Rating</label>
-              <p uib-rating ng-model="vm.replyR.rating" max="10" class="form-control" read-only="false" on-hover="vm.hoveringOver(value)" on-leave="vm.overStar = null"  aria-labelledby="default-rating"></p>
-              <span class="label" ng-class="{'label-warning': vm.percent<30, 'label-info': vm.percent>=30 && vm.percent<70, 'label-success': vm.percent>=70}" ng-show="vm.overStar">{{vm.percent}}%</span>
-
-
-              <input name="text" type="text" ng-model="vm.replyR.rating" id="rating" class="form-control" required>
-              <div ng-messages="vm.form.replyForm.rating.$error" role="alert">
-                <p class="help-block error-text" ng-message="required"> Değerlendirme gerekiyor.</p>
-              </div>
-            </div>
-          </div>
 
           <div class="row">
-            <div class="form-group col-sm-12" show-errors>
-              <label class="control-label req" for="contentR">MESAJ</label>
-              <textarea rows="auto" name="contentR" id="contentR" ng-model="vm.replyR.contentR" class="form-control" placeholder="Mesaj" required>
-              </textarea>
-              <div ng-messages="vm.form.replyForm.name.$error" role="alert">
-                <p class="help-block error-text" ng-message="required">Yorum mesajı gerekiyor.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="row clearfix">
-            <div class="col-sm-12">
-              <div class="form-group">
-                <div class="pull-right">
-                  <button type="submit" class="greybutton">GÖNDER</button>
+            <div class="col-sm-2">
+              <div class="thumbnail">
+                <img ng-src="{{vm.authentication.user.profileImageURL}}" alt="{{vm.authentication.user.displayName}}" class="img-responsive user-photo">
+              </div><!-- /thumbnail -->
+            </div><!-- /col-sm-1 -->
+            <div class="col-sm-10">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                 <div class="row" >
+                   <div class="col-sm-5">
+                     <strong>  {{vm.authentication.user.displayName}}  </strong>
+                     <span class="text-muted" ng-bind="vm.date | date:'mediumDate'"></span>
+                     <span class="label" ng-class="{'label-warning': vm.percent<30, 'label-info': vm.percent>=30 && vm.percent<70, 'label-success': vm.percent>=70}" ng-show="vm.overStar">{{vm.percent}}%</span>
+                   </div>
+                   <div class="col-sm-7 text-right">
+                     <input name="text" type="text" ng-model="vm.replyR.rating" id="rating" class="form-control hidden" required>
+                     <span style="font-size: 10px; padding-right: 10%;" class="rec" uib-rating ng-model="vm.replyR.rating" max="10" read-only="false" on-hover="vm.hoveringOver(value)" state-on="'zmdi zmdi-star zmdi-hc-2x on'" state-off="'text-muted zmdi zmdi-star zmdi-hc-2x'" on-leave="vm.overStar = null"  aria-labelledby="rating"></span>
+                   </div>
+                 </div>
                 </div>
-              </div>
-              <div ng-show="vm.error" class="text-danger">
-                <strong ng-bind="vm.error"></strong>
-              </div>
-            </div>
+                <div class="panel-body"  >
+                  <div class="form-group col-sm-12">
+                    <label class="req" for="contentR">MESAJ</label>
+                    <textarea style="min-height: 100px; max-width: 100%" name="contentR" id="contentR" ng-model="vm.replyR.contentR"  placeholder="Mesaj" required></textarea>
+                    <span>
+                      <button type="submit" style="position: relative; margin-top: -55px" class="btn btn-info pull-right">
+                      <i class="fa fa-paper-plane" aria-hidden="true"></i>GÖNDER
+                    </button>
+                    </span>
+                  </div>
+
+
+                </div><!-- /panel-body -->
+              </div><!-- /panel panel-default -->
+            </div><!-- /col-sm-5 -->
           </div>
         </form>
 
 
 
         <h4 class="text-center">YORUMLAR</h4>
-        <div class="comment subcomment clearfix" ng-repeat="rep in vm.replys">
-          <img ng-src="{{rep.user.profileImageURL}}" alt="{{rep.user.displayName}}" class="img-responsive img-circle pull-left">
-          <a href="#">{{rep.name}}</a>
-          <span class="postedon" ng-bind="rep.created | date:'mediumDate'"></span>
-          <p class="abs" ng-bind="rep.contentR">
-          </p>
+        <div class="row" ng-repeat="rep in vm.replys">
+          <div class="col-sm-2 col-xs-3">
+            <div class="thumbnail">
+              <img ng-src="{{rep.user.profileImageURL}}" alt="{{rep.user.displayName}}" class="img-responsive user-photo">
+            </div><!-- /thumbnail -->
+          </div><!-- /col-sm-1 -->
+          <div class="col-sm-10 col-xs-9">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <div class="row">
+                  <div class="col-md-8">
+                  <strong> {{rep.user.displayName}}</strong>
+                    <span class="text-muted" ng-bind="rep.created | date:'mediumDate'"></span>
+                  </div>
+                  <div class="col-md-4">
+                    <span class="" uib-rating ng-model="rep.rating" max="10" read-only="true" state-on="'zmdi zmdi-star on'" state-off="'zmdi zmdi-star text-muted'"></span>
+                  </div>
+                </div>
+              </div>
+              <div class="panel-body" ng-bind="rep.contentR" ></div><!-- /panel-body -->
+            </div><!-- /panel panel-default -->
+          </div><!-- /col-sm-5 -->
         </div>
-
 
 
       </div>
@@ -166,29 +166,14 @@
         <div class="ratings">
           <h4>DERS DEĞERLENDIRMESİ</h4>
           <div class="rating">
-            <a href="#" class="on"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
-            <a href="#" class="on"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
-            <a href="#" class="on"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
-            <a href="#" class="on"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
-            <a href="#"><i class="zmdi zmdi-star zmdi-hc-2x"></i></a>
+            <span style="font-size: 10px; padding-right: 10%;"  uib-rating ng-model="vm.avar" max="10" read-only="true"  state-on="'zmdi zmdi-star zmdi-hc-2x on'" state-off="'text-muted zmdi zmdi-star zmdi-hc-2x'" aria-labelledby="rating"></span>
           </div>
-          <p>(37 YANIT, ORTALAMSI:<strong>4.8</strong> out of 5)</p>
+          <p>({{vm.replys.length}} YANIT, ORTALAMSI: 10 ÜZERİ <strong>{{vm.avar | number : 1}}</strong>)</p>
         </div>
 
       </div>
     </div>
   </div>
-<div class="row">
-  <div class="col-xs-12">
-
-    <h4>Default</h4>
-    <span uib-rating ng-model="vm.rate" max="vm.max" read-only="vm.isReadonly" on-hover="vm.hoveringOver(value)" on-leave="vm.overStar = null"  aria-labelledby="default-rating"></span>
-    <span class="label" ng-class="{'label-warning': vm.percent<30, 'label-info': vm.percent>=30 && vm.percent<70, 'label-success': vm.percent>=70}" ng-show="vm.overStar && !vm.isReadonly">{{vm.percent}}%</span>
-
-    </div>
-</div>
-
-
 </section>
 
 

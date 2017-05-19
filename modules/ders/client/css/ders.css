@@ -10,3 +10,14 @@ gm-map {
 .tutorial{
     margin-bottom: 20%;
 }
+.on {
+    color: #fdd227;
+}
+.rec::after{
+    content: "*";
+    color: #ff222c;
+    display: inline-block;
+    font-size: 15px;
+    position: absolute;
+    top: -4px;
+}
