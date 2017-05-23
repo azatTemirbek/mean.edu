@@ -22,10 +22,19 @@ exports.invokeRolesPolicies = function () {
       permissions: '*'
     }]
   }, {
-    roles: ['user'],
+    roles: ['teacher'],
     allows: [{
       resources: '/api/kategoris',
-      permissions: ['get', 'post']
+      permissions: ['get']
+    }, {
+      resources: '/api/kategoris/:kategoriId',
+      permissions: ['get']
+    }]
+  }, {
+    roles: ['student'],
+    allows: [{
+      resources: '/api/kategoris',
+      permissions: ['get']
     }, {
       resources: '/api/kategoris/:kategoriId',
       permissions: ['get']

@@ -20,7 +20,8 @@
         controller: 'RepliesListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Replies List'
+          roles: ['admin'],
+          pageTitle: 'Yorum listesi'
         }
       })
       .state('replies.create', {
@@ -32,8 +33,8 @@
           replyResolve: newReply
         },
         data: {
-          roles: ['user', 'admin'],
-          pageTitle: 'Replies Create'
+          roles: ['admin'],
+          pageTitle: 'Yorum Ekle'
         }
       })
       .state('replies.edit', {
@@ -45,8 +46,8 @@
           replyResolve: getReply
         },
         data: {
-          roles: ['user', 'admin'],
-          pageTitle: 'Edit Reply {{ replyResolve.name }}'
+          roles: ['admin'],
+          pageTitle: '{{ replyResolve.name }} Yorumu Düzelt'
         }
       })
       .state('replies.view', {
@@ -58,7 +59,7 @@
           replyResolve: getReply
         },
         data: {
-          pageTitle: 'Reply {{ replyResolve.name }}'
+          pageTitle: '{{ replyResolve.name }} Yorumu'
         }
       });
   }

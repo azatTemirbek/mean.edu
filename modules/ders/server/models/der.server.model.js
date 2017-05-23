@@ -34,6 +34,7 @@ var DerSchema = new Schema({
   comment: [{
     type: String,
     default: '',
+    index: true,
     trim: true
   }],
   coords: {
@@ -58,4 +59,5 @@ var DerSchema = new Schema({
   }
 });
 // ApplyDerSchema the uniqueValidator plugin
+DerSchema.index({ 'description': 'text','name': 'text'});
 mongoose.model('Der', DerSchema);

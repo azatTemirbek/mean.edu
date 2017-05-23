@@ -13,20 +13,21 @@
       title: 'Replies',
       state: 'replies',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['admin']
     });
 
     // Add the dropdown list item
     menuService.addSubMenuItem('topbar', 'replies', {
       title: 'List Replies',
-      state: 'replies.list'
+      state: 'replies.list',
+      roles: ['admin']
     });
 
     // Add the dropdown create item
     menuService.addSubMenuItem('topbar', 'replies', {
       title: 'Create Reply',
       state: 'replies.create',
-      roles: ['user']
+      roles: ['admin']
     });
   }
 }());

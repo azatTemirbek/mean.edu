@@ -32,13 +32,13 @@ var UserSchema = new Schema({
     type: String,
     trim: true,
     default: '',
-    validate: [validateLocalStrategyProperty, 'Please fill in your first name']
+    validate: [validateLocalStrategyProperty, 'Lütfen adınızı yazınız.']
   },
   lastName: {
     type: String,
     trim: true,
     default: '',
-    validate: [validateLocalStrategyProperty, 'Please fill in your last name']
+    validate: [validateLocalStrategyProperty, 'Lütfen soyadınızı yazınız.']
   },
   displayName: {
     type: String,
@@ -50,12 +50,12 @@ var UserSchema = new Schema({
     lowercase: true,
     trim: true,
     default: '',
-    validate: [validateLocalStrategyEmail, 'Please fill a valid email address']
+    validate: [validateLocalStrategyEmail, 'Lütfen geçerli bir e-posta adresini giriniz']
   },
   username: {
     type: String,
-    unique: 'Username already exists',
-    required: 'Please fill in a username',
+    unique: 'Kullanıcı adı zaten var',
+    required: 'Lütfen bir kullanıcı adı giriniz',
     lowercase: true,
     trim: true
   },
@@ -72,34 +72,27 @@ var UserSchema = new Schema({
   },
   provider: {
     type: String,
-    required: 'Provider is required'
+    required: 'Sağlayıcı gereklidir'
   },
   providerData: {},
   additionalProvidersData: {},
   roles: {
     type: [{
       type: String,
-      enum: ['user', 'admin']
+      enum: ['teacher', 'admin', 'student']
     }],
-    default: ['user'],
-    required: 'Please provide at least one role'
+    default: ['student'],
+    required: 'Bir tane rol seçmelisiniz'
   },
   // custom fields
-  job: {
-    type: String,
-  },
   tel: {
     type: String,
-    requred: 'Tel No Gerekiyor'
+    requred: 'Telefon Numara Gerekiyor'
   },
-  universite: {
+  okul: {
     type: String,
-    requred: 'Mezun Okulu Gerekiyor'
+    requred: 'Okulu İsmi Gerekiyor'
   },
-  konum: [{
-    type: Schema.ObjectId,
-    ref: 'Konum'
-  }],
   point: {
     type: Number,
     default: 0
@@ -110,7 +103,7 @@ var UserSchema = new Schema({
   },
   created: {
     type: Date,
-    default: Date.nows
+    default: Date.now
   },
   /* For reset password */
   resetPasswordToken: {

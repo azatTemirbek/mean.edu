@@ -25,18 +25,30 @@
             <p class="help-block error-text" ng-message="email">E-posta adresi geçersiz</p>
           </div>
         </div>
+
+        <div class="form-group" show-errors>
+          <label for="roles">Rol Seçin</label>
+          <select id="roles" name="roles" class="form-control" ng-model="credentials.roles" required>
+            <option value="teacher">Öğretmen</option>
+            <option value="student" ng-selected="true">Öğrenci</option>
+          </select>
+          <div ng-messages="userForm.roles.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Öğretmen yada öğrenici rolü seçin!</p>
+          </div>
+        </div>
+
         <div class="form-group" show-errors>
           <label for="tel">Telefon</label>
-          <input type="tel" id="tel" name="tel" class="form-control" ng-model="credentials.tel" placeholder="Cep no:" lowercase required>
+          <input type="tel" id="tel" name="tel" class="form-control" ng-model="credentials.tel" placeholder="Cep Numara" lowercase required>
           <div ng-messages="userForm.tel.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Tel No gerekiyor.</p>
+            <p class="help-block error-text" ng-message="required">Numara gerekiyor.</p>
           </div>
         </div>
         <div class="form-group" show-errors>
-          <label for="Universite">Üniversite</label>
-          <input type="text" id="universite" name="universite" class="form-control" ng-model="credentials.universite" placeholder="Üniversite İsmi" lowercase required>
-          <div ng-messages="userForm.universite.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Tel No gerekiyor.</p>
+          <label for="okul">Okul</label>
+          <input type="text" id="okul" name="okul" class="form-control" ng-model="credentials.okul" placeholder="Üniversite veya Okul İsmi" lowercase required>
+          <div ng-messages="userForm.okul.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Üniversite veya Okul İsmi gerekiyor.</p>
           </div>
         </div>
         <div class="form-group" show-errors>
@@ -57,12 +69,12 @@
           </div>
         </div>
         <div class="form-group" ng-show="!userForm.password.$error.required">
-          <label>Password Requirements</label>
+          <label>Parola Gereksimleri</label>
           <progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
         </div>
         <div class="text-center form-group">
           <button type="submit" class="btn btn-primary">Kaydol</button>
-          &nbsp; or&nbsp;
+          &nbsp; Vaya &nbsp;
           <a ui-sref="authentication.signin" class="show-signup">Oturum Aç</a>
         </div>
         <div ng-show="error" class="text-center text-danger">

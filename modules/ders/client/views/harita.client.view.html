@@ -42,10 +42,13 @@
     </div>
   </div>
 
-  <div class="dialo well center-block text-center" ng-show="vm.selected">
+  <div class="dialo well center-block text-center"
+       ng-show="vm.selected">
+    <h4 ng-bind="vm.selected.name" ></h4>
+    <h5 ng-bind-html="vm.selected.description | limitTo: 100" ></h5>
     <br>
       <a class="btn btn-info" ui-sref="ders.view({ derId: vm.selected._id })">
-        <span class="glyphicon glyphicon-book aria-hidden="true"></span>
+        <i class="fa fa-info" aria-hidden="true"></i>
         Dersi İncele
       </a>
       <a class="btn btn-success" href="http://maps.google.com/maps?saddr={{vm.currentPositionB.lat}},{{vm.currentPositionB.lng}}&daddr={{vm.selected.coords.lat}},{{vm.selected.coords.lng}}"  >

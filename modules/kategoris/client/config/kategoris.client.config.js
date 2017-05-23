@@ -13,7 +13,7 @@
       title: 'Kategoris',
       state: 'kategoris',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['admin']
     });
 
     // Add the dropdown list item
@@ -26,7 +26,7 @@
     menuService.addSubMenuItem('topbar', 'kategoris', {
       title: 'Create Kategori',
       state: 'kategoris.create',
-      roles: ['user']
+      roles: ['admin']
     });
   }
 }());

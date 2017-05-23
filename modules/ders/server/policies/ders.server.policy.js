@@ -20,14 +20,41 @@ exports.invokeRolesPolicies = function () {
     }, {
       resources: '/api/ders/:derId',
       permissions: '*'
+    }, {
+      resources: '/api/ders/:lat/:lng/:rad',
+      permissions: ['get']
+    }, {
+      resources: '/api/dersAra/:srch',
+      permissions: ['get']
     }]
   }, {
-    roles: ['user'],
+    roles: ['teacher'],
     allows: [{
       resources: '/api/ders',
       permissions: ['get', 'post']
     }, {
       resources: '/api/ders/:derId',
+      permissions: ['get']
+    }, {
+      resources: '/api/ders/:lat/:lng/:rad',
+      permissions: ['get']
+    }, {
+      resources: '/api/dersAra/:srch',
+      permissions: ['get']
+    }]
+  }, {
+    roles: ['student'],
+    allows: [{
+      resources: '/api/ders',
+      permissions: ['get']
+    }, {
+      resources: '/api/ders/:derId',
+      permissions: ['get']
+    }, {
+      resources: '/api/ders/:lat/:lng/:rad',
+      permissions: ['get']
+    }, {
+      resources: '/api/dersAra/:srch',
       permissions: ['get']
     }]
   }, {
@@ -37,6 +64,12 @@ exports.invokeRolesPolicies = function () {
       permissions: ['get']
     }, {
       resources: '/api/ders/:derId',
+      permissions: ['get']
+    }, {
+      resources: '/api/ders/:lat/:lng/:rad',
+      permissions: ['get']
+    }, {
+      resources: '/api/dersAra/:srch',
       permissions: ['get']
     }]
   }]);

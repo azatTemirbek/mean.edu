@@ -85,15 +85,39 @@ exports.delete = function(req, res) {
  * List of Ders
  */
 exports.list = function(req, res) {
-  Der.find().sort('-created').populate('user kategoris', 'displayName profileImageURL job').populate('kategoris').exec(function(err, ders) {
-    if (err) {
-      return res.status(400).send({
-        message: errorHandler.getErrorMessage(err)
-      });
-    } else {
-      res.jsonp(ders);
-    }
-  });
+  Der.find().sort('-created')
+    .populate('user kategoris', 'displayName profileImageURL job')
+    .populate('kategoris')
+    .exec(function(err, ders) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      } else {
+        res.jsonp(ders);
+      }
+    });
+};
+/**
+ * List of searchDers
+ */
+exports.searchDers = function(req, res) {
+  Der.find({ $text: { $search: req.params.srch } })
+    .sort('-created')
+    .populate('kategoris', '_id')
+    .exec(function(err, ders) {
+      if (err) {
+        return res.status(400).send({
+          message: errorHandler.getErrorMessage(err)
+        });
+      }
+      // if(ders.length === 0) {
+      //   res.jsonp([{ mesaje: 'bulunumamdi' }]);
+      // }
+      else {
+        res.jsonp(ders);
+      }
+    });
 };
 
 /**
@@ -114,8 +138,8 @@ exports.nearMap = function (req, res) {
   // }
 
   Der.find()
-    .where("coords.lat").gt(gtex).lt(ltx)
-    .where("coords.lng").gt(gtey).lt(lty)
+    .where('coords.lat').gt(gtex).lt(ltx)
+    .where('coords.lng').gt(gtey).lt(lty)
     .exec(function (err, ders) {
       if (err) {
         return res.status(400).send({
@@ -123,7 +147,6 @@ exports.nearMap = function (req, res) {
         });
       } else {
         res.jsonp(ders);
-        console.log(ders);
       }
     });
 };

@@ -9,17 +9,20 @@
 
   function routeConfig($stateProvider) {
     $stateProvider
+      .state('search', {
+        url: '/search',
+        templateUrl: 'modules/ders/client/views/search.client.view.html',
+        controller: 'SearchController',
+        controllerAs: 'vm'
+      })
       .state('harita', {
         url: '/harita',
         templateUrl: 'modules/ders/client/views/harita.client.view.html',
         controller: 'HaritaController',
-        controllerAs: 'vm'
-      })
-      .state('goruntulu', {
-        url: '/goruntulu',
-        templateUrl: 'modules/ders/client/views/goruntulu.client.view.html',
-        controller: 'GoruntuluController',
-        controllerAs: 'vm'
+        controllerAs: 'vm',
+        data: {
+          pageTitle: 'Dersleri Haritaya Göre Görüntüle'
+        }
       })
       .state('ders', {
         abstract: true,
@@ -32,7 +35,7 @@
         controller: 'DersListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Ders List'
+          pageTitle: 'Ders Listesi'
         }
       })
       .state('ders.create', {
@@ -44,8 +47,8 @@
           derResolve: newDer
         },
         data: {
-          roles: ['user', 'admin'],
-          pageTitle: 'Ders Create'
+          roles: ['teacher', 'admin'],
+          pageTitle: 'Yeni Ders Ekle'
         }
       })
       .state('ders.edit', {
@@ -57,8 +60,8 @@
           derResolve: getDer
         },
         data: {
-          roles: ['user', 'admin'],
-          pageTitle: 'Edit Der {{ derResolve.name }}'
+          roles: ['teacher', 'admin'],
+          pageTitle: '{{ derResolve.name }} Dersi Düzenle'
         }
       })
       .state('ders.view', {
@@ -70,7 +73,7 @@
           derResolve: getDer
         },
         data: {
-          pageTitle: 'Der {{ derResolve.name }}'
+          pageTitle: '{{ derResolve.name }} Dersi Görüntüle'
         }
       });
   }

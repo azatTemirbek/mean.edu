@@ -6,25 +6,29 @@
     <form name="userForm" ng-submit="update(userForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
-          <label for="firstName">First Name</label>
+          <label for="firstName">İsim</label>
           <input type="text" id="firstName" name="firstName" class="form-control" ng-model="user.firstName" placeholder="First Name" required />
           <div ng-messages="userForm.firstName.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">First name is required.</p>
+            <p class="help-block error-text" ng-message="required">İsim gerekli.</p>
           </div>
         </div>
         <div class="form-group" show-errors>
-          <label for="lastName">Last Name</label>
+          <label for="lastName">Soyadı</label>
           <input type="text" id="lastName" name="lastName" class="form-control" ng-model="user.lastName" placeholder="Last Name" required />
           <div ng-messages="userForm.lastName.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Last name is required.</p>
+            <p class="help-block error-text" ng-message="required">Soyadı gerekiyor.</p>
           </div>
         </div>
         <div class="form-group" show-errors>
-          <label class="control-label" for="roles">Roles</label>
+          <label class="control-label" for="roles">Roller</label>
           <div class="controls">
-            <input class="form-control" type="text" name="roles" ng-model="user.roles" id="roles" ng-list required />
+            <select name="roles" id="roles" ng-model="user.roles" class="form-control" required>
+              <option value="student" ng-selected="user.roles===student">Öğrenci</option>
+              <option value="teacher" ng-selected="user.roles===teacher">Öğretmen</option>
+              <option value="Guest" ng-selected="user.roles===Guest">Engelle</option>
+            </select>
             <div ng-messages="userForm.roles.$error" role="alert">
-              <p class="help-block error-text" ng-message="required">At least one role is required.</p>
+              <p class="help-block error-text" ng-message="required">Rol gereklidir.</p>
             </div>
           </div>
         </div>

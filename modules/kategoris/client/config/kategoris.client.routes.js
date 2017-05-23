@@ -20,7 +20,8 @@
         controller: 'KategorisListController',
         controllerAs: 'vm',
         data: {
-          pageTitle: 'Kategoris List'
+          roles: ['admin'],
+          pageTitle: 'Tüm Kategoriler'
         }
       })
       .state('kategoris.create', {
@@ -32,8 +33,8 @@
           kategoriResolve: newKategori
         },
         data: {
-          roles: ['user', 'admin'],
-          pageTitle: 'Kategoris Create'
+          roles: ['admin'],
+          pageTitle: 'Yeni Kategori Ekle'
         }
       })
       .state('kategoris.edit', {
@@ -45,8 +46,8 @@
           kategoriResolve: getKategori
         },
         data: {
-          roles: ['user', 'admin'],
-          pageTitle: 'Edit Kategori {{ kategoriResolve.name }}'
+          roles: ['admin'],
+          pageTitle: '{{ kategoriResolve.name }} Kategorisini Düzelt'
         }
       })
       .state('kategoris.view', {
@@ -58,7 +59,7 @@
           kategoriResolve: getKategori
         },
         data: {
-          pageTitle: 'Kategori {{ kategoriResolve.name }}'
+          pageTitle: '{{ kategoriResolve.name }} Kategorisi'
         }
       });
   }

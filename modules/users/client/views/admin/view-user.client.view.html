@@ -6,10 +6,10 @@
       </div>
       <div class="col-md-4">
         <a class="btn btn-primary" ui-sref="admin.user-edit({userId: user._id})">
-          <i class="glyphicon glyphicon-edit"></i>
+          <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
         </a>
         <a class="btn btn-primary" ng-click="remove();" ng-if="user._id !== authentication.user._id">
-          <i class="glyphicon glyphicon-trash"></i>
+          <i class="fa fa-trash-o" aria-hidden="true"></i>
         </a>
       </div>
     </div>
@@ -18,33 +18,43 @@
   <div class="row">
     <div class="col-md-8">
       <div class="row">
-        <div class="col-md-3"><strong>First Name</strong></div>
+        <div class="col-md-3"><strong>İsim</strong></div>
         <div class="col-md-6" ng-bind="user.firstName"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Last Name</strong></div>
+        <div class="col-md-3"><strong>Soyisim</strong></div>
         <div class="col-md-6" ng-bind="user.lastName"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Email</strong></div>
+        <div class="col-md-3"><strong>E-posta</strong></div>
         <div class="col-md-6" ng-bind="user.email"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Provider</strong></div>
+        <div class="col-md-3"><strong>Sağlayan</strong></div>
         <div class="col-md-6" ng-bind="user.provider"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Created</strong></div>
+        <div class="col-md-3"><strong>Oluşturulum</strong></div>
         <div class="col-md-6" ng-bind="user.created"></div>
       </div>
       <hr/>
       <div class="row">
-        <div class="col-md-3"><strong>Roles</strong></div>
+        <div class="col-md-3"><strong>Roler</strong></div>
         <div class="col-md-6" ng-bind="user.roles"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Tel:</strong></div>
+        <div class="col-md-6" ng-bind="user.tel"></div>
+      </div>
+      <hr/>
+      <div class="row">
+        <div class="col-md-3"><strong>Okul:</strong></div>
+        <div class="col-md-6" ng-bind="user.okul"></div>
       </div>
     </div>
   </div>

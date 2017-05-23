@@ -1,15 +1,15 @@
 <section>
   <div class="page-header">
-    <h1 ng-bind="vm.reply.name"></h1>
+    <h1 ng-bind="vm.reply.contentR"></h1>
   </div>
   <div class="pull-right"
        ng-show="vm.reply.isCurrentUserOwner">
     <a class="btn btn-primary"
        ui-sref="replies.edit({ replyId: vm.reply._id })">
-      <i class="glyphicon glyphicon-edit"></i>
+      <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
     </a>
     <a class="btn btn-primary" ng-click="vm.remove()">
-      <i class="glyphicon glyphicon-trash"></i>
+      <i class="fa fa-trash-o" aria-hidden="true"></i>
     </a>
   </div>
   <small>

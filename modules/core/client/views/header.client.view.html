@@ -42,21 +42,17 @@
       </ul>
       <ul class="navbar-right">
         <li class="search" style="margin: 0px 15px;">
-          <a href="#" class="search s-icon"><i class="zmdi zmdi-search zmdi-hc-lg"></i></a>
-          <div class="search-something">
-            <input type="search" placeholder="search for something">
-            <a href="#"><i class="zmdi zmdi-search"></i></a>
-          </div>
+          <a ui-sref="search" class="search s-icon"><i class="zmdi zmdi-search zmdi-hc-lg"></i></a>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
         <li ui-sref-active="active">
-            <a ui-sref="authentication.signup">Sign Up</a>
+            <a ui-sref="authentication.signup">Kaydol</a>
         </li>
         <li class="divider-vertical"></li>
         <li ui-sref-active="active">
-            <a ui-sref="authentication.signin">Sign In</a>
+            <a ui-sref="authentication.signin">Oturum Aç</a>
         </li>
       </ul>
 
@@ -70,20 +66,20 @@
 
           <ul class="dropdown-menu" uib-dropdown-menu role="menu" aria-labelledby="btn-append-to-body">
             <li role="menuitem">
-              <a ui-sref="settings.profile">Edit Profile</a>
+              <a ui-sref="settings.profile">Profili Düzenle</a>
             </li>
             <li role="menuitem">
-              <a ui-sref="settings.picture">Change Profile Picture</a>
+              <a ui-sref="settings.picture">Profil resmini değiştir</a>
             </li>
             <li role="menuitem" ng-show="authentication.user.provider === 'local'">
-              <a ui-sref="settings.password">Change Password</a>
+              <a ui-sref="settings.password">Şifre değiştir</a>
             </li>
             <li role="menuitem">
-              <a ui-sref="settings.accounts">Manage Social Accounts</a>
+              <a ui-sref="settings.accounts">Sosyal Hesapları Yönet</a>
             </li>
             <li role="menuitem" class="divider"></li>
             <li role="menuitem">
-              <a href="/api/auth/signout" target="_self">Signout</a>
+              <a href="/api/auth/signout" target="_self">Oturumu Kapat</a>
             </li>
           </ul>
         </li>

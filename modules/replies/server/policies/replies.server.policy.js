@@ -25,7 +25,19 @@ exports.invokeRolesPolicies = function () {
       permissions: '*'
     }]
   }, {
-    roles: ['user'],
+    roles: ['teacher'],
+    allows: [{
+      resources: '/api/replies',
+      permissions: ['get']
+    }, {
+      resources: '/api/replies/:replyId',
+      permissions: ['get']
+    }, {
+      resources: '/api/replies/a/:replyDerId',
+      permissions: ['get']
+    }]
+  }, {
+    roles: ['student'],
     allows: [{
       resources: '/api/replies',
       permissions: ['get', 'post']

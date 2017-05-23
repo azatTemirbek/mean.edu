@@ -15,10 +15,10 @@
           </select>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="col-md-4 col-sm-4 col-xs-10">
         <input class="form-control" ng-model="vm.search.$" type="text" placeholder="Anahtar kelime">
       </div>
-      <div class="col-md-2 col-sm-6 col-xs-12">
+      <div class="col-md-2 col-sm-2 col-xs-2">
         <button class="btn btn-primary">
           <i class="fa fa-search" aria-hidden="true"></i>
           ARA</button>
@@ -43,7 +43,7 @@
       <div class="col-sm-9">
         <div class="row">
           <div class="col-md-4 col-sm-6" ng-repeat="der in filtered = ( vm.ders | filter:vm.search:strict ) | pagination: (vm.currentPage-1)*vm.pageSize | limitTo: vm.pageSize ">
-            <div class="tutorial">
+            <div class="shadows">
               <img src="modules/core/client/img/images/popular/201.jpg" class="resp-img" alt="Tutorial">
               <div class="tutorial-details">
                 <h6>{{der.name}}</h6>
@@ -51,7 +51,9 @@
                   <span class="lessons pull-right"><i class="zmdi zmdi-time"></i> {{der.created | date:'mediumDate'}}</span>
                 </p>
                 <p class="abs" ng-bind-html="der.description | limitTo: 100 " ></p>
-                <a ui-sref="ders.view({ derId: der._id })" class="greybutton">DERSİ İNCELE</a>
+                <a ui-sref="ders.view({ derId: der._id })" class="btn btn-info center-block">
+                  <i class="fa fa-info" aria-hidden="true"></i>
+                  DERSİ İNCELE</a>
               </div>
             </div>
           </div>
@@ -74,15 +76,25 @@
       <!--<h4 class="list-group-item-heading" ng-bind="der.name"></h4>-->
     <!--</a>-->
   <!--</div>-->
-  <div class="alert alert-warning text-center" ng-if="vm.ders.$resolved && !vm.ders.length">
-    No Ders yet, why don't you <a ui-sref="ders.create">create one</a>?
-  </div>
   <div class="row">
-    <p class="text-center">
-      <pagination total-items="filtered.length" items-per-page="vm.pageSize" ng-model="vm.currentPage"></pagination>
-    </p>
+    <div class="col-md-12 text-center">
+      <div uib-pagination
+        total-items="filtered.length"
+        ng-model="vm.currentPage"
+        items-per-page="vm.pageSize"
+        max-size="5"
+        boundary-link-numbers="true"
+        class="pagination-md"
+        previous-text="&lsaquo; Önceki "
+        next-text="Sonraki &rsaquo;"
+        num-pages="numPages"></div>
+    </div>
   </div>
-  <div class="navbar-fixed-bottom pading-a">
-    <a ui-sref="ders.create" class="btn btn-danger btn-circle btn-lg pull-right"><i class="glyphicon glyphicon-plus"></i></a>
+  <div class="alert alert-warning text-center" ng-if="vm.ders.$resolved && !vm.ders.length">
+    Hiçbir Ders Bulunamadı <a ui-sref="ders.create">Ders Oluştur!</a>?
+  </div>
+
+  <div class="navbar-fixed-bottom pading-a" ng-if="authentication.user.roles===teacher || admin">
+    <a ui-sref="ders.create" class="btn btn-danger btn-circle btn-lg pull-right"><i class="fa fa-plus" aria-hidden="true"></i></a>
   </div>
 </section>

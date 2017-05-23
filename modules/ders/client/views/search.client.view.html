@@ -1,0 +1,47 @@
+<section class="page">
+  <div class=" text-center">
+    <div class="container">
+      <h2>
+        <div class="search-something">
+          <form ng-submit="vm.searchvalue(vm.sr)">
+            <input type="search" placeholder="Birşeyler Ara" ng-model="vm.sr" >
+            <a ng-click="vm.searchvalue(vm.sr)"><i class="zmdi zmdi-search"></i></a>
+          </form>
+        </div>
+      </h2>
+    </div>
+  </div>
+  <div class="container categories text-center">
+    <div class="row" style="padding-top: 15px;">
+      <div class="col-sm-4">
+        <aside class="categories">
+          <h6>Kategoriler</h6>
+          <ul>
+            <li ng-repeat="k in vm.kategoris" class="ng-scope">
+              <a href ng-click="vm.search.kategoris._id = k._id">{{k.name}}</a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+      <div class="col-sm-8">
+        <div class="row five-bottom shadows" ng-repeat=" l in vm.lessons  | filter:vm.search:strict">
+          <div class="col-sm-12">
+            <div class="tutorial-details">
+              <p><span class="lessons" ng-bind="l.name"></span></p>
+              <p class="abs" ng-bind-html="l.description | limitTo: 100">
+               content
+              </p>
+              <a href="/ders/{{l._id}}" class="btn btn-info">
+                <i class="fa fa-info" aria-hidden="true"></i>
+                Dersi İncele</a>
+            </div>
+          </div>
+        </div>
+        <div class="alert alert-warning text-center" ng-if="vm.lessons.$resolved && !vm.lessons.length">
+         Malesef Ders Bulunamadı
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

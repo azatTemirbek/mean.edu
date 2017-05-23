@@ -6,43 +6,52 @@
           <label for="firstName">İsim</label>
           <input type="text" id="firstName" name="firstName" class="form-control" ng-model="user.firstName" placeholder="First Name" required>
           <div ng-messages="userForm.firstName.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">First name is required.</p>
+            <p class="help-block error-text" ng-message="required">İsim gerekiyor</p>
           </div>
         </div>
         <div class="form-group" show-errors>
-          <label for="lastName">Last Name</label>
+          <label for="lastName">Soyadı</label>
           <input type="text" id="lastName" name="lastName" class="form-control" ng-model="user.lastName" placeholder="Last Name" required>
           <div ng-messages="userForm.lastName.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Last name is required.</p>
+            <p class="help-block error-text" ng-message="required">Soyadı gerekiyor.</p>
           </div>
         </div>
         <div class="form-group" show-errors>
-          <label for="job">Meslek</label>
-          <input type="text" id="job" name="job" class="form-control" ng-model="user.job" placeholder="Meslek ismi" required>
-          <div ng-messages="userForm.job.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Meslek Yazın</p>
+          <label for="okul">Okul</label>
+          <input type="text" id="okul" name="okul" class="form-control" ng-model="user.okul" placeholder="Okul ismi" required>
+          <div ng-messages="userForm.okul.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Okul Yazın</p>
           </div>
         </div>
         <div class="form-group" show-errors>
-          <label for="email">Email</label>
+          <label for="email">E-posta</label>
           <input type="email" id="email" name="email" class="form-control" ng-model="user.email" placeholder="Email" lowercase required>
           <div ng-messages="userForm.email.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Email address is required.</p>
-            <p class="help-block error-text" ng-message="email">Email address is invalid.</p>
+            <p class="help-block error-text" ng-message="required">E-posta adresi gerekiyor.</p>
+            <p class="help-block error-text" ng-message="email">Email adresi geçersiz.</p>
           </div>
         </div>
+
         <div class="form-group" show-errors>
-          <label for="username">Username</label>
+          <label for="tel">Telefon</label>
+          <input type="tel" id="tel" name="tel" class="form-control" ng-model="user.tel" placeholder="Cep Numara" lowercase required>
+          <div ng-messages="userForm.tel.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Numara gerekiyor.</p>
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label for="username">Kullanıcı adı</label>
           <input type="text" id="username" name="username" class="form-control" ng-model="user.username" placeholder="Username" lowercase required>
           <div ng-messages="userForm.username.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Username is required.</p>
+            <p class="help-block error-text" ng-message="required">Kullanıcı adı girilmesi zorunludur.</p>
           </div>
         </div>
         <div class="text-center form-group">
-          <button type="submit" class="btn btn-primary">Save Profile</button>
+          <button type="submit" class="btn btn-primary">Profili kaydet</button>
         </div>
         <div ng-show="success" class="text-center text-success">
-          <strong>Profile Saved Successfully</strong>
+          <strong>Profil Başarıla Kaydedildi</strong>
         </div>
         <div ng-show="error" class="text-center text-danger">
           <strong ng-bind="error"></strong>
