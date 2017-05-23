@@ -24,6 +24,11 @@ var DerSchema = new Schema({
     required: 'Lütfen Açıklama Verin',
     trim: true
   },
+  price: {
+    type: Number,
+    default:0,
+    required: 'Puan miktarında fıyat yazın'
+  },
   kategoris: [{
     type: Schema.ObjectId,
     ref: 'Kategori',
@@ -59,5 +64,6 @@ var DerSchema = new Schema({
   }
 });
 // ApplyDerSchema the uniqueValidator plugin
-DerSchema.index({ 'description': 'text','name': 'text'});
-mongoose.model('Der', DerSchema);
+DerSchema.index({ 'description': 'text','name': 'text' });
+mongoose.model('Der', DerSchema)
+;

@@ -5,11 +5,55 @@
   <div class="col-md-12">
     <form name="vm.form.derForm" class="form-horizontal" ng-submit="vm.save(vm.form.derForm.$valid)" novalidate>
       <fieldset>
-        <div class="form-group" show-errors>
-          <label class="control-label" for="name">Ders İsmi</label>
-          <input name="name" type="text" ng-model="vm.der.name" id="name" class="form-control" placeholder="İsim" required>
-          <div ng-messages="vm.form.derForm.name.$error" role="alert">
-            <p class="help-block error-text" ng-message="required">Ders İsmi Verilmeli</p>
+        <div class="row">
+          <div class="col-md-5">
+            <div class="form-group" show-errors>
+              <label class="control-label" for="name">Ders İsmi</label>
+              <input name="name" type="text" ng-model="vm.der.name" id="name" class="form-control" placeholder="İsim" required>
+              <div ng-messages="vm.form.derForm.name.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Ders İsmi Verilmeli</p>
+              </div>
+            </div>
+
+            <div class="form-group" show-errors>
+              <label for="kategori">{{vm.der._id ? 'Gözüken Kategoriler' :'Kategori Seç:'}}
+                <span class="label label-info" style="margin-right: 2px;" ng-repeat="a in vm.der.kategoris">{{a.name}}</span>
+              </label>
+              <select class="form-control" size="3" name="kategoriN" id="kategori" ng-model="vm.der.kategoris" multiple required>
+                <option  ng-repeat="option in vm.kategoris" ng-value="option._id">{{option.name}}</option>
+              </select>
+              <div ng-show="vm.form.derForm.kategoriN.$error.required">
+                <p class="help-block error-text">En Az Bir Tane Kategori Seçin</p>
+              </div>
+            </div>
+
+            <div class="form-group" show-errors>
+              <label class="control-label" for="price">Ders Fıyatı</label>
+              <input name="price" step="0.10" type="number" ng-model="vm.der.price" id="price" class="form-control" min="0" required>
+              <div ng-messages="vm.form.derForm.price.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Ders Fıyatı Verilmeli</p>
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-6 col-md-offset-1">
+            <!--map-->
+            <div class="form-group">
+              <div class="row">
+                <div class="col-xs-12">
+                  <gm-map class="form-control" style="height: 252px;" center="[ vm.coords.lat, vm.coords.lng ]" zoom="vm.coords.zoom" mapTypeId="google.maps.MapTypeId.ROADMAP" >
+                    <gm-marker
+                      position="map.getCenter()" options="{draggable: true}"
+                      on-dragend="vm.coords = marker.getPosition()"
+                    ></gm-marker>
+                  </gm-map>
+                </div>
+                <div class="col-xs-12">
+                  <button type="button" class="btn btn-primary pull-right" style="position: relative; margin-top: -55px;margin-right: 40px;" ng-click="vm.findMe()" ><i class="fa fa-map-marker" aria-hidden="true"></i>  Beni Bul</button>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
 
@@ -21,34 +65,8 @@
             <p class="help-block error-text" ng-message="required">Ders Açıklaması Girin</p>
           </div>
         </div>
-        <!--map-->
-        <div class="form-group">
-          <div class="row">
-            <div class="col-xs-12">
-              <gm-map center="[ vm.coords.lat, vm.coords.lng ]" zoom="vm.coords.zoom" mapTypeId="google.maps.MapTypeId.ROADMAP" >
-                <gm-marker
-                  position="map.getCenter()" options="{draggable: true}"
-                  on-dragend="vm.coords = marker.getPosition()"
-                ></gm-marker>
-              </gm-map>
-            </div>
-            <div class="col-xs-12">
-              <button type="button" class="btn btn-default pull-right" ng-click="vm.findMe()" ><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>  Beni Bul</button>
-            </div>
-          </div>
-        </div>
 
-        <div class="form-group" show-errors>
-          <label for="kategori">{{vm.der._id ? 'Gözüken Kategoriler' :'Kategori Seç:'}}
-            <span class="label label-info" style="margin-right: 2px;" ng-repeat="a in vm.der.kategoris">{{a.name}}</span>
-          </label>
-          <select class="form-control" size="3" name="kategoriN" id="kategori" ng-model="vm.der.kategoris" multiple required>
-            <option  ng-repeat="option in vm.kategoris" ng-value="option._id">{{option.name}}</option>
-          </select>
-          <div ng-show="vm.form.derForm.kategoriN.$error.required">
-            <p class="help-block error-text">En Az Bir Tane Kategori Seçin</p>
-          </div>
-        </div>
+
 
         <div class="form-group">
           <button type="submit" class="btn btn-primary btn-block">{{vm.der._id ? 'Güncelle' : 'Oluştur'}}</button>

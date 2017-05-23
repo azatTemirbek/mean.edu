@@ -2,10 +2,11 @@
   <div class="container heder">
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center">
-        <p class="pretitle">ONLINE dersler</p>
-        <h2>Bu Gün Kendini Göster!</h2>
+        <p class="pretitle">ONLINE DRESLER</p>
+        <h2 class="pretitle" style="margin: 0px!important;" >Bu Gün Kendini Göster!</h2>
         <p>Her gün yeni şeyler öğrenin ve çevrimiçi öğrenmenin çeşitliliğinden ilham al</p>
-        <a href="#" class="btn btn-lg btn-warning"><i class="glyphicon glyphicon-play  "></i> İlk Dersini Bedavaya Al!</a>
+        <a ui-sref="ders.create" class="btn btn-lg btn-warning">
+          <i class="fa fa-play" aria-hidden="true"></i> İlk Dersini Bedavaya Al!</a>
       </div>
     </div>
     <ul class="rslides-header rslides">
@@ -22,9 +23,9 @@
           <div class="img-container-bg">
             <img src="modules/core/client/img/images/features/feature-2.png" class="make-center" alt="Feature">
           </div>
-          <h6>Heryerden izle, konuş, soru sor!!!</h6>
+          <h6>Haritadan bakarak, En yakın öğretmeni bul!!!</h6>
           <p>Yeterki oğrenmek iste! Tüm profesionel hocalarimiz eline gelsin!</p>
-          <a href="#" class="readmore"><span>DAHA FAZLA OKU&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
+          <a ui-sref="harita" class="readmore"><span>HARİTAYA BAK&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
         </div>
       </div>
       <div class="col-md-4">
@@ -34,7 +35,7 @@
           </div>
           <h6>Tüm cihazlarda çalışan sistem</h6>
           <p>İster bilgisayarda, ister yelefnda , ister tablette chalişan bir sistemle öğrenmeye başla</p>
-          <a href="#" class="readmore"><span>DAHA FAZLA OKU&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
+          <a ui-sref="ders.list" class="readmore"><span>DERS BUl&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
         </div>
       </div>
       <div class="col-md-4">
@@ -44,7 +45,7 @@
           </div>
           <h6>Yeni yetenekleri öğren</h6>
           <p>Spor, Sanat, Bilgisayar, Yabanci dil ögreteblemn bir sistem. Yeniliklerden Haberdar ol!</p>
-          <a href="#" class="readmore"><span>DAHA FAZLA OKU&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
+          <a ui-sref="ders.list" class="readmore"><span>HEMEN DERS ARA&nbsp;&nbsp;&nbsp;</span><i class="zmdi zmdi-long-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -63,21 +64,21 @@
           <div class="category-with-bg cat1">
             <h5>Temel matematik dersler</h5>
             <p>Trigonometri konusu dahil olmak üzere temelini iyi kur!</p>
-            <a href="#" class="goto"><i class="zmdi zmdi-long-arrow-right"></i></a>
+            <a ui-sref="ders.list" class="goto"><i class="zmdi zmdi-long-arrow-right"></i></a>
           </div>
         </div>
         <div class="col-md-4 col-sm-6">
           <div class="category-with-bg cat2">
             <h5>Ofis Programlari</h5>
             <p>Word, Excel temel dersleri</p>
-            <a href="#" class="goto"><i class="zmdi zmdi-long-arrow-right"></i></a>
+            <a ui-sref="ders.list" class="goto"><i class="zmdi zmdi-long-arrow-right"></i></a>
           </div>
         </div>
         <div class="col-md-4 col-sm-6">
           <div class="category-with-bg cat3">
             <h5>Müzik Özel dersi</h5>
             <p>Notalari okumayı öğreneleim</p>
-            <a href="#" class="goto"><i class="zmdi zmdi-long-arrow-right"></i></a>
+            <a ui-sref="ders.list" class="goto"><i class="zmdi zmdi-long-arrow-right"></i></a>
           </div>
         </div>
       </div>

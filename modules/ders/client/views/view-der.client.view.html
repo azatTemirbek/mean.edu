@@ -35,7 +35,7 @@
             }
           </style>
         </div>
-        <h3 ng-bind="vm.der.name"></h3>
+        <h1>{{vm.der.name}}</h1>
         <p class="class-details">
           <span class="lessons"><i class="zmdi zmdi-time"></i>
             <span ng-bind="vm.der.created | date:'mediumDate'"></span>
@@ -131,12 +131,23 @@
 
       </div>
       <div class="col-md-3">
-        <div class="order text-center">
-          <p class="price">59</p>
-          <p>SAATLIK TEK FİYAT</p>
-          <a href="#" class="blueplay">BU DERSİ SATIN AL</a>
+        <div class="order text-center" style="padding: 8%;">
+          <div>
+            <span class="price">{{vm.der.price}}</span>
+            <br>
+            <i class="fa fa-money" aria-hidden="true"></i>
+            /saat
+            <p>SAATLİK TEK FİYAT</p>
+          </div>
           <p class="order-or"><span>OR</span></p>
-          <p>ŞİMDI BAŞLAz</p>
+          <div>
+            <span class="price">{{vm.der.price/60 | number : 2}}</span>
+            <br>
+            <i class="fa fa-money" aria-hidden="true"></i>
+            /dakika
+            <p>DAKIKA FİYATI</p>
+          </div>
+          <a href="#" class="blueplay">HEMEN SATIN AL</a>
         </div>
         <div class="pros">
           <h4>ÖĞRETMEN HAKKINDA</h4>
@@ -163,7 +174,7 @@
             </ul>
           </div>
         </div>
-        <div class="ratings">
+        <div class="ratings" ng-show="vm.replys.length">
           <h4>DERS DEĞERLENDIRMESİ</h4>
           <div class="rating">
             <span style="font-size: 10px; padding-right: 10%;"  uib-rating ng-model="vm.avar" max="10" read-only="true"  state-on="'zmdi zmdi-star zmdi-hc-2x on'" state-off="'text-muted zmdi zmdi-star zmdi-hc-2x'" aria-labelledby="rating"></span>

@@ -30,3 +30,6 @@ gm-map {
 .five-bottom{
     margin-bottom: 5%;
 }
+.price::before{
+    content: '';
+}

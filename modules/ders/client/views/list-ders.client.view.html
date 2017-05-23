@@ -46,13 +46,18 @@
             <div class="shadows">
               <img src="modules/core/client/img/images/popular/201.jpg" class="resp-img" alt="Tutorial">
               <div class="tutorial-details">
-                <h6>{{der.name}}</h6>
-                <p><i class="zmdi zmdi-account-circle"></i> <span ng-if="der.user" ng-bind="der.user.displayName"></span>
+                <h4>{{der.name}}
+                  <span class="pull-right">
+                    <i class="fa fa-money" aria-hidden="true"></i>
+                    {{der.price}}
+                  </span>
+                </h4>
+                <h6><i class="zmdi zmdi-account-circle"></i> <span ng-if="der.user" ng-bind="der.user.displayName"></span>
                   <span class="lessons pull-right"><i class="zmdi zmdi-time"></i> {{der.created | date:'mediumDate'}}</span>
-                </p>
+                </h6>
                 <p class="abs" ng-bind-html="der.description | limitTo: 100 " ></p>
-                <a ui-sref="ders.view({ derId: der._id })" class="btn btn-info center-block">
-                  <i class="fa fa-info" aria-hidden="true"></i>
+                <a ui-sref="ders.view({ derId: der._id })" class="btn btn-success center-block">
+                  <i class="fa fa-info-circle" aria-hidden="true"></i>
                   DERSİ İNCELE</a>
               </div>
             </div>
@@ -95,6 +100,6 @@
   </div>
 
   <div class="navbar-fixed-bottom pading-a" ng-if="authentication.user.roles===teacher || admin">
-    <a ui-sref="ders.create" class="btn btn-danger btn-circle btn-lg pull-right"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    <a ui-sref="ders.create" class="btn btn-danger btn-circle btn-lg pull-right"><i class="fa fa-pencil" aria-hidden="true"></i></a>
   </div>
 </section>
