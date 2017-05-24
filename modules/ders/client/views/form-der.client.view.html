@@ -9,7 +9,7 @@
           <div class="col-md-5">
             <div class="form-group" show-errors>
               <label class="control-label" for="name">Ders İsmi</label>
-              <input name="name" type="text" ng-model="vm.der.name" id="name" class="form-control" placeholder="İsim" required>
+              <input autofocus name="name" type="text" ng-model="vm.der.name" id="name" class="form-control" placeholder="İsim" required>
               <div ng-messages="vm.form.derForm.name.$error" role="alert">
                 <p class="help-block error-text" ng-message="required">Ders İsmi Verilmeli</p>
               </div>

@@ -1,0 +1,63 @@
+<section>
+  <div class="page-header text-center">
+    <h1>{{vm.sayfalar._id ? 'Sayfa Düzenle' : 'Yeni sayfa Ekle'}}</h1>
+  </div>
+  <div class="col-md-12">
+    <form name="vm.form.sayfalarForm" ng-submit="vm.save(vm.form.sayfalarForm.$valid)" novalidate>
+      <fieldset>
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="form-group" show-errors>
+              <label class="control-label" for="baslik">Başlık</label>
+              <input name="baslik" type="text" ng-model="vm.sayfalar.baslik" id="baslik" class="form-control" placeholder="baslik" required>
+              <div ng-messages="vm.form.sayfalarForm.baslik.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Başlık Yazın.</p>
+              </div>
+            </div>
+            <div class="form-group" show-errors>
+              <label class="control-label" for="uzanti">Uzantı</label>
+              <input name="uzanti" type="text" ng-model="vm.sayfalar.uzanti" id="uzanti" class="form-control" placeholder="uzanti" required>
+              <div ng-messages="vm.form.sayfalarForm.uzanti.$error" role="alert">
+                <p class="help-block error-text" ng-message="required">Uzantı Yazın.</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label" for="resimurl">Resim Url</label>
+              <input name="resimurl" type="text"
+                     ng-model="vm.sayfalar.resimurl"
+                     id="resimurl" class="form-control"
+                     placeholder="http://lorempixel.com/output/sports-q-c-600-200-1.jpg">
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <img ng-show="vm.sayfalar.resimurl" ng-src="{{vm.sayfalar.resimurl}}"
+                 class="img-responsive img-rounded"
+                 style="max-height: 300px; width: 100%;">
+          </div>
+        </div>
+
+        <div class="form-group" show-errors>
+          <label class="control-label" for="icerik">İçerik</label>
+          <textarea ui-tinymce="vm.tinymceOptions"
+                    name="icerik"
+                    rows="5"
+                    ng-model="vm.sayfalar.icerik"
+                    id="icerik"
+                    class="form-control"
+                    placeholder="İçerik Yazın"
+                    required>
+          </textarea>
+          <div ng-messages="vm.form.sayfalarForm.icerik.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">İçerik Yazın.</p>
+          </div>
+        </div>
+        <div class="form-group pull-right">
+          <button type="submit" class="btn btn-success btn-lg pull-right">{{vm.sayfalar._id ? 'Güncelle' : 'Yeni Oluştur'}}</button>
+        </div>
+        <div ng-show="vm.error" class="text-danger">
+          <strong ng-bind="vm.error"></strong>
+        </div>
+      </fieldset>
+    </form>
+  </div>
+</section>

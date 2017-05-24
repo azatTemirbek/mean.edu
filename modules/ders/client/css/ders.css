@@ -33,3 +33,6 @@ gm-map {
 .price::before{
     content: '';
 }
+.page-heading {
+    background-color: #eff5f9;
+}

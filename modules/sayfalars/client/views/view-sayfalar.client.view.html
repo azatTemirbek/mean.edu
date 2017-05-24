@@ -1,0 +1,61 @@
+<section>
+ <div class="container">
+   <div class="row">
+     <div class="col-md-12">
+       <ul class="breadcrumb">
+         <li>
+           <a href="/">Ansayfa</a> <span class="divider"></span>
+         </li>
+         <li>
+           <a href >Sayfalar</a> <span class="divider"></span>
+         </li>
+         <li class="active">
+           {{vm.sayfalar.uzanti}}
+         </li>
+       </ul>
+
+       <div class="page-header">
+         <h1 class="text-center">
+           {{vm.sayfalar.baslik}}<small>
+         </small>
+           <span class="pull-right"
+                 ng-show="vm.sayfalar.isCurrentUserOwner">
+            <a class="btn btn-primary"
+               ui-sref="sayfalars.edit({ sayfalarId: vm.sayfalar._id })">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a class="btn btn-primary" ng-click="vm.remove()">
+              <i class="fa fa-trash-o"></i>
+            </a>
+          </span>
+         </h1>
+       </div>
+       <div class="row">
+         <div  ng-show="vm.sayfalar.resimurl" ng-class="{ 'col-md-4': vm.sayfalar.resimurl }" >
+           <img ng-show="vm.sayfalar.resimurl" ng-src="{{vm.sayfalar.resimurl}}"
+                alt="{{vm.sayfalar.baslik}}"
+                class="img-responsive img-rounded"
+                style="padding: 0 0 10% 0;"
+                >
+         </div>
+         <div ng-class="{ 'col-md-8': vm.sayfalar.resimurl, 'col-md-12': !vm.sayfalar.resimurl, }">
+           <div class="lead" ng-bind-html="vm.sayfalar.icerik"></div>
+         </div>
+       </div>
+       <em class="text-muted">
+         <span ng-bind="vm.sayfalar.created | date:'mediumDate'"></span>
+         Yayınladı
+         <span ng-if="vm.sayfalar.user"
+               ng-bind="vm.sayfalar.user.displayName"></span>
+         <span ng-if="!vm.sayfalar.user">Silinmiş Kullanıcı</span>
+       </em>
+     </div>
+   </div>
+ </div>
+
+
+
+
+
+
+</section>
