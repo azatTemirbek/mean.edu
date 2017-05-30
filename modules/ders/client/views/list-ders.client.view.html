@@ -42,7 +42,7 @@
       </div>
       <div class="col-sm-9">
         <div class="row">
-          <div class="col-md-4 col-sm-6"
+          <div class="col-md-4 col-sm-6 lol"
                style="margin-bottom: 20px;"
                ng-repeat="der in filtered = ( vm.ders | filter:vm.search:strict ) | pagination: (vm.currentPage-1)*vm.pageSize | limitTo: vm.pageSize ">
             <div class="shadows">
@@ -57,7 +57,7 @@
                 <h6><i class="zmdi zmdi-account-circle"></i> <span ng-if="der.user" ng-bind="der.user.displayName"></span>
                   <span class="lessons pull-right"><i class="zmdi zmdi-time"></i> {{der.created | date:'mediumDate'}}</span>
                 </h6>
-                <p class="abs" ng-bind-html="der.description | limitTo: 100 " ></p>
+                <p class="abs" ng-bind-html="der.description | limitTo: 65  " ></p>
                 <a ui-sref="ders.view({ derId: der._id })" class="btn btn-success center-block">
                   <i class="fa fa-info-circle" aria-hidden="true"></i>
                   DERSİ İNCELE</a>
@@ -83,6 +83,8 @@
       <!--<h4 class="list-group-item-heading" ng-bind="der.name"></h4>-->
     <!--</a>-->
   <!--</div>-->
+
+
   <div class="row">
     <div class="col-md-12 text-center">
       <div uib-pagination

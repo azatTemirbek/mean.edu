@@ -102,7 +102,9 @@ exports.list = function(req, res) {
  * List of searchDers
  */
 exports.searchDers = function(req, res) {
-  Der.find({ $text: { $search: req.params.srch } })
+
+  var clean=req.params.srch.replace(/[^a-zA-Z0-9]/g, '');
+  Der.find({ $text: { $search: clean } })
     .sort('-created')
     .populate('kategoris', '_id')
     .exec(function(err, ders) {
@@ -111,9 +113,6 @@ exports.searchDers = function(req, res) {
           message: errorHandler.getErrorMessage(err)
         });
       }
-      // if(ders.length === 0) {
-      //   res.jsonp([{ mesaje: 'bulunumamdi' }]);
-      // }
       else {
         res.jsonp(ders);
       }

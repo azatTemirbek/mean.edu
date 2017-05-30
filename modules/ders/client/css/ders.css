@@ -21,11 +21,12 @@ gm-map {
     position: absolute;
     top: -4px;
 }
-.nav>li>a:focus, .nav>li>a:hover, .nav .open>a {
+.navi>li>a:focus, .navi>li>a:hover, .navi .open>a {
     background-color: transparent !important;
 }
 .shadows{
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.13);
+    float: left;
 }
 .five-bottom{
     margin-bottom: 5%;
@@ -35,4 +36,7 @@ gm-map {
 }
 .page-heading {
     background-color: #eff5f9;
+}
+.lol{
+    height: 370px;
 }

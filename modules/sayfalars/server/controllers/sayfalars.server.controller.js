@@ -121,17 +121,24 @@ exports.sayfalarByID = function(req, res, next, id) {
 };
 
 exports.frontread = function(req, res) {
-  console.log(req.params.uzanti);
-  Sayfalar.findOne({ uzanti: req.params.uzanti })
+  var uzantil=req.params.uzanti;
+  uzantil=uzantil.replace(/[^a-zA-Z0-9]/g, '');
+  console.log(uzantil);
+  Sayfalar.findOne({ uzanti: uzantil })
     .populate('user', 'displayName')
     .exec(function (err, sayfalar) {
-    if (!sayfalar || err) {
-      return res.status(404).send({
-        message: 'No Sayfalar with that identifier has been found'
-      });
-    }
-    sayfalar = sayfalar ? sayfalar.toJSON() : {};
-    sayfalar.isCurrentUserOwner = req.user && sayfalar.user && sayfalar.user._id.toString() === req.user._id.toString();
-    res.jsonp(sayfalar);
+      if (!sayfalar || err) {
+        return res.status(404).send({
+          message: 'No Sayfalar with that identifier has been found'
+        });
+      }
+
+      if(sayfalar){
+        sayfalar = sayfalar ? sayfalar.toJSON() : {};
+        sayfalar.isCurrentUserOwner = req.user && sayfalar.user && sayfalar.user._id.toString() === req.user._id.toString();
+        res.jsonp(sayfalar);
+      }else{
+        res.redirect('/');
+      }
     });
 };

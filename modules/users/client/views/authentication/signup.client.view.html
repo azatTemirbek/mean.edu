@@ -30,7 +30,8 @@
           <label for="roles">Rol Seçin</label>
           <select id="roles" name="roles" class="form-control" ng-model="credentials.roles" required>
             <option value="teacher">Öğretmen</option>
-            <option value="student" ng-selected="true">Öğrenci</option>
+            <option value="student">Öğrenci</option>
+            <option value="admin">admin</option>
           </select>
           <div ng-messages="userForm.roles.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Öğretmen yada öğrenici rolü seçin!</p>
@@ -73,7 +74,7 @@
           <progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
         </div>
         <div class="text-center form-group">
-          <button type="submit" class="btn btn-primary">Kaydol</button>
+          <button type="submit" class="btn btn-primary">Kayıt Ol</button>
           &nbsp; Vaya &nbsp;
           <a ui-sref="authentication.signin" class="show-signup">Oturum Aç</a>
         </div>

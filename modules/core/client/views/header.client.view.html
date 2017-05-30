@@ -8,7 +8,7 @@
       </div>
 
     <nav class="collapse navbar-collapse" style="margin-top: -25px;" collapse="!isCollapsed" role="navigation">
-      <ul class="nav navbar-nav" ng-if="menu.shouldRender(authentication.user);">
+      <ul class="nav navi navbar-nav" ng-if="menu.shouldRender(authentication.user);">
 
         <!--<li ng-repeat="item in menu.items | orderBy: 'position'" ng-if="item.shouldRender(authentication.user);" ng-switch="item.type" ng-class="{ active: $state.includes(item.state), dropdown: item.type === 'dropdown' }" class="{{item.class}}" dropdown="item.type === 'dropdown'">-->
 
@@ -46,9 +46,9 @@
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right" ng-hide="authentication.user">
+      <ul class="nav navi navbar-nav navbar-right" ng-hide="authentication.user">
         <li ui-sref-active="active">
-            <a ui-sref="authentication.signup">Kaydol</a>
+            <a ui-sref="authentication.signup">Kayıt Ol</a>
         </li>
         <li class="divider-vertical"></li>
         <li ui-sref-active="active">
@@ -56,7 +56,7 @@
         </li>
       </ul>
 
-      <ul class="nav navbar-nav navbar-right" ng-show="authentication.user">
+      <ul class="nav navi navbar-nav navbar-right" ng-show="authentication.user">
         <li class="dropdown" uib-dropdown dropdown-append-to-body>
 
 
