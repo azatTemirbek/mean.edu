@@ -139,7 +139,7 @@
             /saat
             <p>SAATLİK TEK FİYAT</p>
           </div>
-          <p class="order-or"><span>OR</span></p>
+          <p class="order-or"><span>VEYA</span></p>
           <div>
             <span class="price">{{vm.der.price/60 | number : 2}}</span>
             <br>
@@ -147,7 +147,10 @@
             /dakika
             <p>DAKIKA FİYATI</p>
           </div>
-          <a href="#" class="blueplay">HEMEN SATIN AL</a>
+          <a href="tel:{{vm.der.user.tel}}" class="btn btn-success">
+            <i class="fa fa-phone" aria-hidden="true"></i>
+            HEMEN ARA
+          </a>
         </div>
         <div class="pros">
           <h4>ÖĞRETMEN HAKKINDA</h4>

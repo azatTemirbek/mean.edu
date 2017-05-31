@@ -24,9 +24,11 @@ gm-map {
 .navi>li>a:focus, .navi>li>a:hover, .navi .open>a {
     background-color: transparent !important;
 }
+.navi{
+    padding-top: 15px;
+}
 .shadows{
     box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.13);
-    float: left;
 }
 .five-bottom{
     margin-bottom: 5%;
@@ -40,3 +42,7 @@ gm-map {
 .lol{
     height: 370px;
 }
+.navi>li>a{
+    color: white;
+}
+

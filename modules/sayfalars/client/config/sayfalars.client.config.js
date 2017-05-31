@@ -13,7 +13,7 @@
       title: 'Sayfalars',
       state: 'sayfalars',
       type: 'dropdown',
-      roles: ['*']
+      roles: ['admin']
     });
 
     // Add the dropdown list item
@@ -26,7 +26,7 @@
     menuService.addSubMenuItem('topbar', 'sayfalars', {
       title: 'Create Sayfalar',
       state: 'sayfalars.create',
-      roles: ['teacher']
+      roles: ['admin']
     });
   }
 }());

@@ -162,7 +162,7 @@ exports.derByID = function(req, res, next, id) {
     });
   }
 
-  Der.findById(id).populate('user kategoris', 'displayName profileImageURL job').populate('kategoris').exec(function (err, der) {
+  Der.findById(id).populate('user kategoris', 'displayName profileImageURL job tel').populate('kategoris').exec(function (err, der) {
     if (err) {
       return next(err);
     } else if (!der) {
